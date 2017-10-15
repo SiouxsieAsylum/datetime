@@ -1,0 +1,27 @@
+{
+  "name": "datetime",
+  "version": "1.0.0",
+  "description": "Event Application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SiouxsieAsylum/datetime.git"
+  },
+  "dependencies": {
+    "express": "*",
+    "nodemon": "*",
+    "body-parser": "*",
+    "ejs": "*",
+    "express-validator": "*",
+    "node-pushnotifications": "*"
+  },
+  "author": "Andrea McKenzie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SiouxsieAsylum/datetime/issues"
+  },
+  "homepage": "https://github.com/SiouxsieAsylum/datetime#readme"
+}
