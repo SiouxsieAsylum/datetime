@@ -4,19 +4,21 @@
   "description": "Event Application",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev" : "nodemon app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SiouxsieAsylum/datetime.git"
   },
   "dependencies": {
-    "express": "*",
-    "nodemon": "*",
     "body-parser": "*",
     "ejs": "*",
+    "express": "*",
     "express-validator": "*",
-    "node-pushnotifications": "*"
+    "morgan": "^1.9.0",
+    "node-pushnotifications": "*",
+    "nodemon": "*"
   },
   "author": "Andrea McKenzie",
   "license": "ISC",
