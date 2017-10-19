@@ -1,4 +1,5 @@
 # Tech Needs
+### Someone remind me to get a prepaid SIM card for the spare phone <3
 
 ## API 
 
