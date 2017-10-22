@@ -14,6 +14,8 @@ Event.findById = (id) => {
 
 Event.create = (event) => {
   return db.one(`INSERT INTO events (name, day, time_begins, time_ends, description, attendees, host_id) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *`,[event.name, event.day, event.time_begins, event.time_ends, event.description, event.attendees, event.host_id])
+  // I have no idea if this will work
+  return db.one(`INSERT INTO user_calendar (user_id, event_id) VALUES ($1, $2) RETURNING *`, [event.host_id, event.id,])
 }
 
 Event.update = (event, id) => {
@@ -22,4 +24,5 @@ Event.update = (event, id) => {
 
 Event.delete = (id) => {
   return db.none(`DELETE FROM events WHERE id = $1`, [id])
+  return db.none(`DELETE FROM user_calendar WHERE event_id = $1`, [id])
 }
