@@ -17,17 +17,8 @@ CREATE TABLE IF NOT EXISTS users (
 id SERIAL PRIMARY KEY,
 name VARCHAR(50) NOT NULL,
 phone_number VARCHAR(10) NOT NULL,
-email VARCHAR(255) NOT NULL,
+email VARCHAR(255) NOT NULL
 --social media accounts to be added later
-calendar_id INTEGER
-);
-
-
-CREATE TABLE IF NOT EXISTS attendees_of_events (
-  -- do I even need an id? This is supposed to be intrinsically linked to each event. Can a reference to something else be the primary key?
-  id SERIAL PRIMARY KEY,
-  event_id INTEGER,
-  user_id INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS events (
@@ -37,15 +28,14 @@ day DATE NOT NULL,
 time_begins TIME NOT NULL,
 time_ends TIME,
 description TEXT,
-attendees_table_id INTEGER, --array of user ids
 host_id INTEGER REFERENCES users(id)
 );
 
-CREATE TABLE IF NOT EXISTS user_calendar (
-  -- do I even need an id? This is supposed to be intrinsically linked to each user. Can a reference to something else be the primary key?
-id SERIAL PRIMARY KEY, --shouldn't need to be a serial, instantiated when the user is instantiated as well
-user_id INTEGER REFERENCES users(id),
-events_id INTEGER REFERENCES events(id)  -- array of event ids
+CREATE TABLE IF NOT EXISTS invitations (
+  -- do I even need an id? This is supposed to be intrinsically linked to each event. Can a reference to something else be the primary key?
+  id SERIAL PRIMARY KEY,
+  event_id INTEGER REFERENCES events(id),
+  user_id INTEGER REFERENCES users(id),
+  status VARCHAR(255) DEFAULT 'pending'
 );
-
 

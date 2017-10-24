@@ -11,7 +11,7 @@ function setDatabase(){
     return pg({
       database: 'datetime_db_dev',
       port: 5432,
-      host: localhost
+      host: 'localhost'
     })
   } else if (process.env.NODE_ENV == "production"){
     return pg(process.env.DATABASE_URL);
