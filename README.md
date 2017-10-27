@@ -25,7 +25,12 @@ A user authenticated app where you can CRUD events and invite people to them, an
   * Where, When, Start Time, End Time(optional)
   * Google Map of Location of event
 
-### Settings Page
+### Login/Register pages
+
+### Landing page 
+
+### Create Event page
+- [How to upload a photo](https://stackoverflow.com/questions/31353703/how-to-upload-image-file-from-computer-and-set-as-div-background-image-using-jqu)
 
 
 
