@@ -5,7 +5,7 @@
 
 This is the first version of an application meant to make planning events easier. This way, everyone knows who is coming to any event you set, and when. 
 
-##MVP
+## MVP
 
 A user authenticated app where you can CRUD events and invite people to them, and that will email (bonus: notify!) you when the event is close.   
 
@@ -21,8 +21,9 @@ A user authenticated app where you can CRUD events and invite people to them, an
   * Tabs of events 
 
 ### Event Page
-  * Picture, Title
-  * Where, When, Start Time, End Time
+  * Picture(optional), Title
+  * Where, When, Start Time, End Time(optional)
+  * Google Map of Location of event
 
 ### Settings Page
 
@@ -46,6 +47,6 @@ A user authenticated app where you can CRUD events and invite people to them, an
 
 - [Google Calendar API](https://developers.google.com/google-apps/calendar/quickstart/nodejs) <-- bonus! (looks really complex tbh)
 - [Google Maps API](https://developers.google.com/maps/documentation/embed/guide)
-- [Node push notifications](https://www.npmjs.com/package/node-pushnotifications) <-- gonna try to implement for android and ios
+- [Node push notifications](https://www.npmjs.com/package/node-pushnotifications) <-- bonus! gonna try to implement for android and ios
 - [Authentication] <-- Pleaaaase tell me where my filepath went wrong in my heroku deployment for the to-do app because I got auth to work perfectly fine but now it's unusable
-- [Express Mailer] (https://www.npmjs.com/package/express-mailer)
+- [Express Mailer](https://www.npmjs.com/package/express-mailer)
