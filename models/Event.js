@@ -16,8 +16,11 @@ Event.findById = (id) => {
 
 Event.create = (event) => {
   return db.one(`INSERT INTO events (name, day, time_begins, time_ends, description, host_id) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *`,[event.name, event.day, event.time_begins, event.time_ends, event.description, event.host_id])
-  // I have no idea if this will work
-  return db.one(`INSERT INTO user_calendar (user_id, event_id) VALUES ($1, $2) RETURNING *`, [event.host_id, event.id,])
+
+  // gotta chain some promises
+  // have an op to create ids plus invites, but back end handle seperately.
+  // this should be in invition model
+  // return db.one(`INSERT INTO invitations (user_id, event_id) VALUES ($1, $2) RETURNING *`, [event.host_id, event.id,])
 }
 
 Event.update = (event, id) => {

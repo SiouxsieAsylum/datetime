@@ -7,7 +7,11 @@ This is the first version of an application meant to make planning events easier
 
 ## MVP
 
-A user authenticated app where you can CRUD events and invite people to them, and that will email (bonus: notify!) you when the event is close.   
+A user authenticated app where you can CRUD events and invite people to them, and that will email (bonus: notify!) you when the event is close.  
+
+## Wireframes
+
+![Wireframes]('public/images/wireframes.png') 
 
 ## Format/Pages Necessary
 
