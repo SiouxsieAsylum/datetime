@@ -5,15 +5,20 @@
 
 This is the first version of an application meant to make planning events easier. This way, everyone knows who is coming to any event you set, and when. 
 
+##MVP
+
+A user authenticated app where you can CRUD events and invite people to them, and that will email (bonus: notify!) you when the event is close.   
+
 ## Format/Pages Necessary
 
 ### Home Page
   * A calendar that can be touched/clicked
-  * An RSSfeed of changes to any of your events since you last logged in
+  * A feed  of changes to any of your events since you last logged in
 
 ### Profile Page
   * Picture/Name/Etc.
-  * A list of events you are a part of
+  * A list of events you are a part of/hosting
+  * Tabs of events 
 
 ### Event Page
   * Picture, Title
@@ -23,23 +28,24 @@ This is the first version of an application meant to make planning events easier
 
 
 
-## Features
+## Bonus Features
 
   * Admin verification
 
 ... All attendees can make changes to event name, date, time, and whereabouts, but only admins of each event can approve those changes. 
 
-  * RSS feed
+  * Notification feed
 
-... Every page comes with an automatic subscription to the RSS feed that allows for updates on every change within the event, especially RSVP changes
+... The home, event, and user page comes with an automatic  feed that allows for updates on every change within the event, especially RSVP changes
 ... You can "mute" events to unsubscribe so they don't get push notifications 
 
   * Push Notifications 
 ... all RSVP changes, event changes, etc
 
-## Links
+## Tech and extra packages required/desired
 
-[Google Calendar API](https://developers.google.com/google-apps/calendar/quickstart/nodejs)
-[Google Maps API](https://developers.google.com/maps/documentation/embed/guide)
-[How to make an RSS Feed](https://www.youtube.com/watch?v=PTXnmMlipmo)
-[Node push notifications](https://www.npmjs.com/package/node-pushnotifications)
+- [Google Calendar API](https://developers.google.com/google-apps/calendar/quickstart/nodejs) <-- bonus! (looks really complex tbh)
+- [Google Maps API](https://developers.google.com/maps/documentation/embed/guide)
+- [Node push notifications](https://www.npmjs.com/package/node-pushnotifications) <-- gonna try to implement for android and ios
+- [Authentication] <-- Pleaaaase tell me where my filepath went wrong in my heroku deployment for the to-do app because I got auth to work perfectly fine but now it's unusable
+- [Express Mailer] (https://www.npmjs.com/package/express-mailer)

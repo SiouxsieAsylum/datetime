@@ -13,5 +13,3 @@ const newUser = User.findById(1);
 
 const newEvent = Event.findById(1);
 
-
-
