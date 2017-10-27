@@ -18,6 +18,8 @@ Invitation.updateRSVP = (invite,id) => {
   return db.one(`UPDATE invitations SET rsvp = $1 WHERE id = $2`,[invite.rsvp, id]);
 }
 
+// invitation update status
+
 Invitation.destroy = (invite,)
 
 module.exports = Invitation;
