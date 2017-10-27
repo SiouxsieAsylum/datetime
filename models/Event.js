@@ -2,11 +2,7 @@
 
 const Event = {};
 
-// "class" methods
-
 Event.findAll = () => {
-  // this is supposed to get all events where its id is inside the user calendar if a specific user.
-  // maybe handle authentication somewhere else?
   return db.query(`SELECT * FROM events`);
 }
 
@@ -23,13 +19,16 @@ Event.create = (event) => {
   // return db.one(`INSERT INTO invitations (user_id, event_id) VALUES ($1, $2) RETURNING *`, [event.host_id, event.id,])
 }
 
+Event.findRSVPs = (id) => {
+  return db.manyOrNone(`SELECT user.name, invitations.rsvp FROM invitations JOIN events ON events.id = invitations.event_id JOIN users ON users.id = invitations.user_id WHERE invitations.event_id = $1`,[id])
+}
+
 Event.update = (event, id) => {
    return db.one(`UPDATE events SET (name, day, time_begins, time_ends, description, host_id) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *`,[event.name, event.day, event.time_begins, event.time_ends, event.description, event.host_id, id])
 }
 
 Event.delete = (id) => {
   return db.none(`DELETE FROM events WHERE id = $1`, [id])
-  return db.none(`DELETE FROM user_calendar WHERE event_id = $1`, [id])
 }
 
 module.exports = Event;

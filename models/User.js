@@ -1,8 +1,7 @@
 const db = require('../db/config');
 
 const User = {};
-User.findAll = () => {
-  // this is supposed to get every user that you've invited to an event before.
+User.findAllYourFriends = () => {
   return db.query(`SELECT * FROM users`);
 }
 
