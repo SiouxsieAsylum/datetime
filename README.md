@@ -11,7 +11,7 @@ A user authenticated app where you can CRUD events and invite people to them, an
 
 ## Wireframes
 
-![Wireframes](images/wireframes.png) 
+![Wireframes](public/static/wireframes.jpg) 
 
 ## Format/Pages Necessary
 
