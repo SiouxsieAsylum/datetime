@@ -10,6 +10,9 @@ Event.findById = (id) => {
   return db.oneOrNone(`SELECT * FROM events WHERE id = $1`, [id])
 }
 
+// there needs to be a find my hosted events, maybe here?
+// there should be a find by day function too
+
 Event.create = (event) => {
   return db.one(`INSERT INTO events (name, day, time_begins, time_ends, description, host_id) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *`,[event.name, event.day, event.time_begins, event.time_ends, event.description, event.host_id])
 

@@ -1,21 +1,16 @@
 const db = require('../db/config');
+const User = {};
 // mapbox
 // join as
 // http://www.dofactory.com/sql/subquery
 
-
-
-const User = {};
 User.findAllYourFriends = (id) => {
-  // return db.query(`SELECT * FROM users JOIN invitations`);
+  return db.manyOrNone(`SELECT * FROM users WHERE users.id = ANY(SELECT invitations.user_id FROM invitations JOIN events ON invitations.event_id = events.id WHERE events.id = ANY(SELECT events.id FROM events JOIN users ON users.id = events.host_id WHERE users.id = 1));`);
 }
 
-// doesn't work.
-// find all users names that match ids that are joined in invitations to events that match ids of events whose host_id matches yours
-
-// User.findAllYourHostedEvents = (id) => {
-//   return db.manyOrNone(`SELECT * FROM invitations JOIN events ON invitations.event_id = events.id JOIN users ON users.id = events.host_id WHERE invitations.user_id = 1;`,[id]);
-// }
+User.findAllYourHostedEvents = (id) => {
+  return db.manyOrNone(`SELECT * FROM invitations JOIN events ON invitations.event_id = events.id JOIN users ON users.id = events.host_id WHERE invitations.user_id = 1;`,[id]);
+}
 
 User.findById = (id) => {
   return db.oneOrNone(`SELECT * FROM users WHERE id = $1`, [id])
