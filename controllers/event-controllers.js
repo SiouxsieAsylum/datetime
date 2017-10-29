@@ -19,6 +19,18 @@ eventController.findRSVPs = (req,res) => {
   })
 }
 
+eventController.edit = (req,res) => {
+  Event.findById(req.params.id)
+  .then(event => {
+    console.log(typeof req.params.id)
+    res.render('events/event-edit', {event})
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).render('auth/oops');
+  })
+}
+
 eventController.findByDay = (req,res) => {
   Event.findByDay(req.params.day)
   console.log("day passed")
@@ -51,11 +63,11 @@ eventController.show = (req,res) => {
 eventController.create = (req,res) => {
   Event.create({
     nam: req.body.name,
-    da: req.body.day,
+    day: req.body.day,
     // address = req.body.address,
     time_begin: req.body.time_begins,
     time_end: req.body.time_ends,
-    descriptio: req.body.description
+    description: req.body.description
   })
   .then(event => {
     // there will be a form in the modal, and it will be a post request to create many users. those users,a nd the event information, will be passed on to make a new Invitation

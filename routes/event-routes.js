@@ -8,20 +8,20 @@ const eventRouter = express.Router();
 eventRouter.get("/", eventController.index);
 
 // whichever of these two controllers come first will run because the routes can't automatically tell the datatype. gotta make sure the right controller is being invoked
-eventRouter.get("/:id", (req,res) => {
-  if ((req.params.id).includes("-")){
-    console.log("in the day");
-    eventController.findByDay
-  } else {
-    console.log("in the show");
+eventRouter.get("/:id",
+ // (req,res) => {
+  // if ((req.params.id).includes("-")){
+  //   console.log("in the day");
+  //   eventController.findByDay
+  // } else {
+  //   console.log("in the show");
     eventController.show
-  };
-})
+//   };
+// })
 // eventRouter.get("/:day", eventController.findByDay);
+)
 
-eventRouter.get("/:id/edit", (req, res) => {
-  res.render('events/event-edit')
-})
+eventRouter.get("/:id/edit", eventController.edit)
 // model and controller not written yet
 eventRouter.get('/:day', eventController.findByDay);
 

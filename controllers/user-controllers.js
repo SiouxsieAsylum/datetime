@@ -48,6 +48,17 @@ userController.show = (req,res) => {
   })
 }
 
+userController.edit = (req,res) => {
+  User.findById(req.params.id)
+  .then(user => {
+    res.render('users/user-edit', {user})
+  })
+  .catch(err => {
+        console.log(err);
+    res.status(500).render('auth/oops.js');
+  })
+}
+
 userController.create = (req,res) => {
   User.create({
     name: req.body.name,

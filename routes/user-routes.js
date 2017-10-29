@@ -3,13 +3,12 @@ const userController = require('../controllers/user-controllers')
 const userRouter = express.Router();
 
 userRouter.get("/", userController.findAllEvents)
-userRouter.get("/:id", userController.show)
-userRouter.get("/:id/edit", (req,res) => {
-  res.render('user/user-edit');
-})
 userRouter.get("/new", (req,res) => {
-  res.render('user/user-new');
+  res.render('users/user-new');
 })
+userRouter.get("/:id", userController.show)
+userRouter.get("/:id/edit", userController.edit)
+
 
 userRouter.post('/', userController.create)
 

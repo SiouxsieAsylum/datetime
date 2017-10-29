@@ -18,8 +18,8 @@ Event.findById = (id) => {
 // there needs to be a find my hosted events, maybe here?
 // there should be a find by day function too
 
-Event.create = (event) => {
-  return db.one(`INSERT INTO events (name, day, time_begins, time_ends, description, host_id) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *`,[event.name, event.day, event.time_begins, event.time_ends, event.description, event.host_id])
+Event.create = (event,userId) => {
+  return db.one(`INSERT INTO events (name, day, address, time_begins, time_ends, description, host_id) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *`,[event.name, event.day, event.address, event.time_begins, event.time_ends, event.description, userId])
 
   // gotta chain some promises
   // have an op to create ids plus invites, but back end handle seperately.
