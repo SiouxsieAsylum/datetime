@@ -12,7 +12,7 @@ const eventController = {}
 eventController.findRSVPs = (req,res) => {
   Event.findRSVPs(req.params.id)
   .then(users => {
-    res.render('event/event-show', {users})
+    res.render('events/event-show', {users})
   })
   .catch(err => {
     res.status.render('auth/oops');
@@ -44,11 +44,20 @@ eventController.findByDay = (req,res) => {
 }
 
 eventController.index = (req,res) => {
-  Event.findMyEvents(req.params.id)
+  Event.findAll()
   .then(events => {
+    console.log(events);
     res.render('events/event-index');
   })
 }
+
+// eventController.index = (req,res) => {
+//   Event.findMyEvents(req.params.id)
+//   .then(events => {
+//     console.log(events);
+//     res.render('events/event-index');
+//   })
+// }
 eventController.show = (req,res) => {
   Event.findById(req.params.id)
   .then(event => {

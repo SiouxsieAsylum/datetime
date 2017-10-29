@@ -6,6 +6,9 @@ const eventRouter = express.Router();
 // get routes/
 /////////////
 eventRouter.get("/", eventController.index);
+eventRouter.get('/new', (req, res) => {
+  res.render('events/event-new');
+})
 
 // whichever of these two controllers come first will run because the routes can't automatically tell the datatype. gotta make sure the right controller is being invoked
 eventRouter.get("/:id",
@@ -24,10 +27,6 @@ eventRouter.get("/:id",
 eventRouter.get("/:id/edit", eventController.edit)
 // model and controller not written yet
 eventRouter.get('/:day', eventController.findByDay);
-
-eventRouter.get('/new', (req, res) => {
-  res.render('events/events-new');
-})
 ///////////////
 //post routes/
 /////////////

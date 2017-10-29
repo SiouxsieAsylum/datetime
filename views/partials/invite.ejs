@@ -1,12 +1,14 @@
 <!-- name -->
- <form method="post">
+
   Name (First and/or Last)
  <input type="text" name="name" placeholder="Name">
   <%= //user ? user.name : name%>
   <%= //user ? user.phone_number : phone number%>
   <%= //user ? user.email : email%>
- <input type="text" name="phone_number" placeholder="Phone Number">
- <input type="text" name="email" placeholder="Email">
+  Telephone
+ <input type="tel" name="phone_number" placeholder="Phone Number">
+ Email
+ <input type="email" name="email" placeholder="Email">
  <!-- Room for improvement: relationship table? -->
  <!-- <input type="text" name="relationship" placeholder="<%= //user ? user.email : email%>"> -->
 <!-- phone -->
