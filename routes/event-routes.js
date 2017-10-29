@@ -20,7 +20,7 @@ eventRouter.get("/:id", (req,res) => {
 // eventRouter.get("/:day", eventController.findByDay);
 
 eventRouter.get("/:id/edit", (req, res) => {
-  res.render('')
+  res.render('events/event-edit')
 })
 // model and controller not written yet
 eventRouter.get('/:day', eventController.findByDay);
