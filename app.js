@@ -7,8 +7,8 @@ const validate = require("express-validator");
 const logger = require("morgan");
 
 
-const profRoute = require("./routes/user-routes");
-const eventRoute = require("./routes/event-routes");
+const userRoutes = require("./routes/user-routes");
+const eventRoutes = require("./routes/event-routes");
 const port = process.env.PORT || 8000;
 // console.log(validate);
 
@@ -17,8 +17,8 @@ const app = express();
 app.use(logger("dev"));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use("/events", eventRoute);
-app.use("/users", userRoute);
+app.use("/events", eventRoutes);
+app.use("/user", userRoutes);
 
 
 app.set('view engine', 'ejs');

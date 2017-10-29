@@ -6,7 +6,7 @@ const userController = {};
 userController.findHostedEvents = (req,res) => {
   User.findAllYourHostedEvents(req.params.id)
   .then(events => {
-    res.render(`user/${req.params.id}/user-show`, events
+    res.render(`users/${req.params.id}/user-show`, {events})
   })
   .catch(err => {
     console.log(err);
@@ -17,7 +17,7 @@ userController.findHostedEvents = (req,res) => {
 userController.findAllEvents = (req,res) => {
   User.findAllEvents(req.params.id)
   .then(events => {
-    res.render('user/user-index', events
+    res.render('users/user-index', {events})
   })
   .catch(err => {
     console.log(err);
@@ -40,7 +40,7 @@ userController.findFriends = (req,res) => {
 userController.show = (req,res) => {
   User.findById(req.params.id)
   .then(user => {
-    res.render('user/user-show', events
+    res.render('users/user-show', {user})
   })
   .catch(err => {
     console.log(err);
@@ -50,12 +50,12 @@ userController.show = (req,res) => {
 
 userController.create = (req,res) => {
   User.create({
-    name = req.body.name,
-    phone_number = req.body.phone_number,
-    email = req.body.email
+    name: req.body.name,
+    phone_number: req.body.phone_number,
+    email: req.body.email
   })
   .then(user => {
-    res.render('user/user-show', user)
+    res.render('users/user-show', {user})
   })
   .catch(err => {
     console.log(err);
@@ -65,12 +65,12 @@ userController.create = (req,res) => {
 
 userController.update = (req,res) => {
   User.update({
-    name = req.body.name,
-    phone_number = req.body.phone_number,
-    email = req.body.email
+    name: req.body.name,
+    phone_number: req.body.phone_number,
+    email: req.body.email
   }, req.params.id)
   .then(user => {
-    res.render('user/user-show', user)
+    res.render('users/user-show', {user})
   })
   .catch(err => {
     console.log(err);
@@ -78,8 +78,8 @@ userController.update = (req,res) => {
   })
 }
 
-userController.delete = (req,res) => {
-  User.delete(req.params.id);
+userController.destroy = (req,res) => {
+  User.destroy(req.params.id)
   .then(() => {
     res.redirect('/back')
   })

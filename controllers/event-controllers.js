@@ -22,6 +22,7 @@ eventController.findRSVPs = (req,res) => {
 eventController.findByDay = (req,res) => {
   Event.findByDay(req.params.day)
   .then(events => {
+    console.log(typeof req.params.day)
     res.render('events/event-index', {events})
   })
   .catch(err => {
@@ -30,7 +31,7 @@ eventController.findByDay = (req,res) => {
 }
 
 eventController.index = (req,res) => {
-  Event.findAll()
+  Event.findMyEvents(req.params.id)
   .then(events => {
     res.render('events/event-index');
   })
@@ -38,6 +39,7 @@ eventController.index = (req,res) => {
 eventController.show = (req,res) => {
   Event.findById(req.params.id)
   .then(event => {
+    console.log(typeof req.params.id)
     res.render('events/event-show', {event})
   })
   .catch(err => {
@@ -47,12 +49,12 @@ eventController.show = (req,res) => {
 }
 eventController.create = (req,res) => {
   Event.create({
-    name = req.body.name,
-    day = req.body.day,
+    nam: req.body.name,
+    da: req.body.day,
     // address = req.body.address,
-    time_begins = req.body.time_begins,
-    time_ends - req.body.time_ends,
-    description = req.body.description
+    time_begin: req.body.time_begins,
+    time_end: req.body.time_ends,
+    descriptio: req.body.description
   })
   .then(event => {
     // there will be a form in the modal, and it will be a post request to create many users. those users,a nd the event information, will be passed on to make a new Invitation
@@ -65,12 +67,12 @@ eventController.create = (req,res) => {
 }
 eventController.update = (req,res) => {
   Event.update({
-    name = req.body.name,
-    day = req.body.day,
+    name: req.body.name,
+    day: req.body.day,
     // address = req.body.address,
-    time_begins = req.body.time_begins,
-    time_ends - req.body.time_ends,
-    description = req.body.description
+    time_begins: req.body.time_begins,
+    time_ends: req.body.time_ends,
+    description: req.body.description
   },req.params.id)
   .then(event => {
     // there will be a form in the modal, and it will be a post request to create many users. those users,a nd the event information, will be passed on to make a new Invitation

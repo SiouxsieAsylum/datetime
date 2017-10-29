@@ -29,7 +29,7 @@ User.update = (user, id) => {
    return db.one(`UPDATE users SET (name, phone_number, email) VALUES ($1,$2,$3) RETURNING *`,[user.name, user.phone_number, user.email])
 }
 
-User.delete = (id) => {
+User.destroy = (id) => {
   return db.none(`DELETE FROM users WHERE id = $1`, [id])
 }
 
