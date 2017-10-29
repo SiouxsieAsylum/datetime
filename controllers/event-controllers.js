@@ -18,6 +18,17 @@ eventController.findRSVPs = (req,res) => {
     res.status.render('auth/oops');
   })
 }
+
+eventController.findByDay = (req,res) => {
+  Event.findByDay(req.params.day)
+  .then(events => {
+    res.render('events/event-index', {events})
+  })
+  .catch(err => {
+    res.status.render('auth/oops');
+  })
+}
+
 eventController.index = (req,res) => {
   Event.findAll()
   .then(events => {

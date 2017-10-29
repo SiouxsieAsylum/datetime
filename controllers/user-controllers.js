@@ -6,7 +6,30 @@ const userController = {};
 userController.findHostedEvents = (req,res) => {
   User.findAllYourHostedEvents(req.params.id)
   .then(events => {
-    res.render('user/user-show', events
+    res.render(`user/${req.params.id}/user-show`, events
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).render('auth/oops.js');
+  })
+}
+
+userController.findAllEvents = (req,res) => {
+  User.findAllEvents(req.params.id)
+  .then(events => {
+    res.render('user/user-index', events
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).render('auth/oops.js');
+  })
+}
+
+userController.findFriends = (req,res) => {
+  User.findAllYourFriends(req.params.id)
+  .then(users => {
+    // render a partial of all prev users in the create event page
+    // res.render('user/user-show', events
   })
   .catch(err => {
     console.log(err);
@@ -55,10 +78,10 @@ userController.update = (req,res) => {
   })
 }
 
-userController.create = (req,res) => {
+userController.delete = (req,res) => {
   User.delete(req.params.id);
-  .then(user => {
-    res.render('user/user.show', user)
+  .then(() => {
+    res.redirect('/back')
   })
   .catch(err => {
     console.log(err);

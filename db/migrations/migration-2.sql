@@ -1,8 +1,15 @@
- ALTER TABLE users ADD username VARCHAR
- ALTER TABLE users ADD password TEXT
- ALTER TABLE users ADD relationship VARCHAR
+ -- CREATE TABLE IF NOT EXISTS relationships (
+ --    id SERIAL PRIMARY KEY;
+ --    user_id INTEGER REFERENCES users.id NOT NULL,
+ --    friend_id INTEGER REFERENCES users.id NOT NULL,
+ --    relationship VARCHAR NOT NULL,
+ --  );
 
- ALTER TABLE invitations ADD rsvp INTEGER DEFAULT 0
+ ALTER TABLE users ADD username VARCHAR;
+ ALTER TABLE users ADD password TEXT;
+
+ -- ALTER TABLE invitation ADD relationship VARCHAR
+ ALTER TABLE invitations ADD rsvp INTEGER DEFAULT 0;
 
  ALTER TABLE events ADD address VARCHAR NOT NULL;
 -- (for how many minutes late (default 0))

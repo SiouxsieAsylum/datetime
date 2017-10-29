@@ -4,11 +4,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const validate = require("express-validator");
-// const push = require("node-pushnotifications");
 const logger = require("morgan");
 
 
-const profRoute = require("./routes/profile-routes");
+const profRoute = require("./routes/user-routes");
 const eventRoute = require("./routes/event-routes");
 const port = process.env.PORT || 8000;
 // console.log(validate);
@@ -19,7 +18,7 @@ app.use(logger("dev"));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use("/events", eventRoute);
-app.use("/profile", profRoute);
+app.use("/users", userRoute);
 
 
 app.set('view engine', 'ejs');

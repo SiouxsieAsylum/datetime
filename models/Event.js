@@ -2,12 +2,17 @@
 
 const Event = {};
 
+Event.findByDay = (day) => {
+  return db.query(`SELECT * FROM events WHERE events.day = $1`, [day]);
+}
+
+// do I need to set this to if invited/hosted?
 Event.findAll = () => {
   return db.query(`SELECT * FROM events`);
 }
 
 Event.findById = (id) => {
-  return db.oneOrNone(`SELECT * FROM events WHERE id = $1`, [id])
+  return db.one(`SELECT * FROM events WHERE id = $1`, [id])
 }
 
 // there needs to be a find my hosted events, maybe here?
