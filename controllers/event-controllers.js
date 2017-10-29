@@ -21,6 +21,7 @@ eventController.findRSVPs = (req,res) => {
 
 eventController.findByDay = (req,res) => {
   Event.findByDay(req.params.day)
+  console.log("day passed")
   .then(events => {
     console.log(typeof req.params.day)
     res.render('events/event-index', {events})
