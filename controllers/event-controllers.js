@@ -6,6 +6,7 @@
 // .catch
 const Event = require('../models/event');
 const Invitation = require('../models/invitation');
+const help = require('../services/time-helpers');
 
 const eventController = {}
 
@@ -33,31 +34,30 @@ eventController.edit = (req,res) => {
 
 eventController.findByDay = (req,res) => {
   Event.findByDay(req.params.day)
-  console.log("day passed")
+  // console.log("day passed")
   .then(events => {
-    console.log(typeof req.params.day)
-    res.render('events/event-index', {events})
+    // console.log(typeof req.params.day)
+    res.render('events/event-day', { events })
   })
   .catch(err => {
+    console.log(err)
     res.status.render('auth/oops');
   })
 }
 
-eventController.index = (req,res) => {
-  Event.findAll()
-  .then(events => {
-    console.log(events);
-    res.render('events/event-index');
-  })
-}
-
 // eventController.index = (req,res) => {
-//   Event.findMyEvents(req.params.id)
+//   Event.findAll()
 //   .then(events => {
 //     console.log(events);
+//     // help.saveDatInfo(events);
 //     res.render('events/event-index');
+//     })
+//   .catch(err => {
+//     console.log(err);
+//     res.status(500).render('auth/oops');
 //   })
 // }
+
 eventController.show = (req,res) => {
   Event.findById(req.params.id)
   .then(event => {

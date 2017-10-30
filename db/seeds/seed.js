@@ -16,3 +16,4 @@ const newEvent = Event.create({"name":"Jane Doe's Birthday",
                                "description":"Awesome party for Jane Doe!",
                                "host_id":1})
 
+// require bcryptjs in here, salt the passwords, and seed away

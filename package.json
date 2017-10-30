@@ -12,13 +12,21 @@
     "url": "git+https://github.com/SiouxsieAsylum/datetime.git"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "*",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^4.0.0",
     "ejs": "*",
     "express": "*",
+    "express-mailer": "^0.3.1",
+    "express-session": "^1.15.6",
     "express-validator": "*",
     "morgan": "^1.9.0",
     "node-pushnotifications": "*",
+    "nodemailer": "^4.3.1",
     "nodemon": "*",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "pg-promise": "^7.0.2"
   },
   "author": "Andrea McKenzie",

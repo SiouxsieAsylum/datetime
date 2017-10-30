@@ -1,22 +1,34 @@
 // program that tells the time
-let Event = require('../models/event');
-const trackAllEvents = (req,res,next){
-  let events = Event.findMyEvents(req.params.id);
-  for (let e of events) {
-    keepTime(e);
-  }
-}
+// what you can do is take the event info when each page loads, and then just keep it running as long as possible
+// gta talk about how to keep it running in the back end
+
+// clicking on Invite Users should render the invitation file
+// https://github.com/foreverjs/forever
+// https://javascript.info/promise-chaining
+
+const Event = require('../models/event');
+const eventController = require('../controllers/event-controllers')
+const express = require('express');
+const expressMailer = require('express-mailer');
+const savedInfo = "";
+
+// const saveDatInfo = () => {
+//  return new Promise(function(resolve,reject){
+//   setTimout(Function(){
+//     resolve(Event.findAll())
+//   })
+//  })
+// }
 
 const keepTime = function(event){
   let now = new Date();
 
   let targetTime = event.time_begins;
-  let targetDate = event.day;
 
   // break target down
-  let targetYear = targetDate.substring(0,4)
-  let targetMonth = (parseInt(targetDate.substring(5,7))- 1).toString();
-  let targetDay = targetDate.substring(8,10);
+  let targetYear = event.day.getFullYear();
+  let targetMonth = event.day.getMonth();
+  let targetDay = event.day.getDate();
 
   let targetHour = targetTime.substring(0,2);
   let targetMinute = targetTime.substring(3,5);
@@ -33,15 +45,24 @@ const keepTime = function(event){
   let targetString = `${targetYear} ${targetMonth} ${targetDay} ${targetHour} ${targetMinute}`;
 
   console.log("target = "+targetString);
-  console.log("current =" +currentString)
+  console.log("current = " +currentString)
 
   setInterval(keepTime, 1000)
-  return currentString == targetString ? true : false
+  return currentString == targetString ? alert("It is time") : console.log("not yet")
 
   next();
 }
 
 // program that emails the targets if the times match
+
+// const sendItsStarting = function(event) => {
+//   const name = event.name;
+//   const start = event.time_begins;
+//   const end = event.time_ends;
+//   const address = event.address;
+// }
+
 module.exports = {
-  trackAllEvents;
+  // saveDatInfo
+  // cycleThrough
 }
