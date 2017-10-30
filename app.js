@@ -4,32 +4,32 @@ const path = require("path");
 const validate = require("express-validator");
 const mailer = require('express-mailer');
 const logger = require("morgan");
+const sesh = require('express-session');
+const cookieParser = require('cookie-parser');
+const passport = require('passport');
 
 const timeKeep = require("./services/time-helpers");
 const userRoutes = require("./routes/user-routes");
 const eventRoutes = require("./routes/event-routes");
+const authRoutes = require("./routes/auth-routes");
 const port = process.env.PORT || 8000;
 
 const app = express();
-
-// mailer.extend(app, {
-//   from: 'datetimetest001@yahoo.com',
-//   host: 'smtp.yahoo.com', // hostname
-//   secureConnection: true, // use SSL
-//   port: 465, // port for secure SMTP
-//   transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
-//   auth: {
-//     user: req.user.email,
-//     pass: req.user.password
-//   }
-// });
-
+require('dotenv').config();
 
 
 app.use(logger("dev"));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
+app.use(session({
+  secret: process.env.SECRET_KEY;
+  resave: false,
+  saveUninitialized: true
+}))
+app.use(passport.initialize());
+app.use(passport.session());
 
-// app.use(timeKeep);
+app.use("/auth",authRoutes);
 app.use("/events", eventRoutes);
 app.use("/user", userRoutes);
 

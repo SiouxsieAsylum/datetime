@@ -21,12 +21,20 @@ User.findById = (id) => {
   return db.oneOrNone(`SELECT * FROM users WHERE id = $1`, [id])
 }
 
-User.create = (user) => {
+User.findByUserName = (username) => {
+  return db.oneOrNone(`SELECT * FROM users WHERE username = $1`, [username])
+}
+
+User.invite = (user) => {
   return db.one(`INSERT INTO users (name, phone_number, email) VALUES ($1,$2,$3) RETURNING *`,[user.name, user.phone_number, user.email])
 }
 
+User.create = (user) => {
+  return db.one(`INSERT INTO users (name, phone_number, email, username, password) VALUES ($1,$2,$3,$4,$5) RETURNING *`,[user.name, user.phone_number, user.email, user.username, user.password])
+}
+
 User.update = (user, id) => {
-   return db.one(`UPDATE users SET (name, phone_number, email) VALUES ($1,$2,$3) RETURNING *`,[user.name, user.phone_number, user.email])
+   return db.one(`UPDATE users SET name = $1 , phone_number = $2, email = $3, username = $4, password = $5 WHERE id = $6 RETURNING *`,[user.name, user.phone_number, user.email, user.username, user.password, id])
 }
 
 User.destroy = (id) => {

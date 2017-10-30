@@ -1,5 +1,6 @@
 const User = require('../models/user');
-
+const Invitation = require('../models/invitation');
+const bcrypt = require('bcrypt');
 const userController = {};
 
 // hosted events are to be displayed on user profile, the day page, and on the index
@@ -59,14 +60,38 @@ userController.edit = (req,res) => {
   })
 }
 
+userController.invite = (req,res) => {
+  User.invite({
+    name: req.body.name,
+    phone_number: req.body.phone_number,
+    email: req.body.email,
+  })
+  .then(user => {
+    Invitation.create(event_id, user.id);
+    // res.render('users/user-show', {user})
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).render('auth/oops.js');
+  })
+}
+
 userController.create = (req,res) => {
+  const salt = bcrypt.genSaltSync();
+  const hash = bcrypt.hashSync(req.body.password, salt);
   User.create({
     name: req.body.name,
     phone_number: req.body.phone_number,
-    email: req.body.email
+    email: req.body.email,
+    username: req.body.username,
+    password: hash;
   })
   .then(user => {
-    res.render('users/user-show', {user})
+    req.login(user,(err)=>{
+      if (err) return next(err);
+      res.redirect('/users')
+    })
+    // res.render('users/user-show', {user})
   })
   .catch(err => {
     console.log(err);
