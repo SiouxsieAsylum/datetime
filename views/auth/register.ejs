@@ -1,0 +1,15 @@
+<%include ../partials/toolbar.ejs%>
+
+<!-- <form method="POST" action="/auth/register">
+  <input class="username" name = "username" placeholder = "username">
+  <input class="password" name = "password" type="password" placeholder = "password">
+  <button class="submission" type = "submit" value = "submit"></button>
+</form> -->
+
+<form method="POST" action="/auth/register">
+<% include ../partials/user-form.ejs%>
+<input class="submission" type="submit" value="Submit">
+
+</form>
+
+<%include ../partials/endfile.ejs%>

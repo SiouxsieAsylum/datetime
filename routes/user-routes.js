@@ -10,7 +10,7 @@ userRouter.get("/:id", userController.show)
 userRouter.get("/:id/edit", userController.edit)
 
 
-userRouter.post('/', userController.create)
+// userRouter.post('/', userController.create)
 
 userRouter.put('/:id', userController.update)
 

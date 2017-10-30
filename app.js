@@ -5,6 +5,7 @@ const validate = require("express-validator");
 const mailer = require('express-mailer');
 const logger = require("morgan");
 const sesh = require('express-session');
+const methodOverride= require('method-override');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 
@@ -17,17 +18,20 @@ const port = process.env.PORT || 8000;
 const app = express();
 require('dotenv').config();
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}))
 
 app.use(logger("dev"));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
-app.use(session({
-  secret: process.env.SECRET_KEY;
+app.use(sesh({
+  secret: process.env.SECRET_KEY,
   resave: false,
   saveUninitialized: true
 }))
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(methodOverride('_method'));
 
 app.use("/auth",authRoutes);
 app.use("/events", eventRoutes);
