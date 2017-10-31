@@ -4,8 +4,11 @@ const userRouter = express.Router();
 
 userRouter.get("/", userController.findAllEvents)
 userRouter.get("/new", (req,res) => {
-  res.render('users/user-new');
+  res.render('users/user-new', {
+      auth: (req.user) ? true : false
+    });
 })
+
 userRouter.get("/:id", userController.show)
 userRouter.get("/:id/edit", userController.edit)
 

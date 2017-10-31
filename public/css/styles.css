@@ -17,7 +17,7 @@ body {
     height:5vh;
     width: 5vh;
     background-image: url(../images/icon.png);
-
+    background-size: cover;
 }
 
 button {

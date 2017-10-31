@@ -1,5 +1,5 @@
 const passport = require('passport');
-const User = ('../../models/user');
+const User = require('../../models/user');
 
 module.exports = () => {
   passport.serializeUser((user,done) => {
@@ -7,7 +7,8 @@ module.exports = () => {
   })
 
   passport.deserializeUser((user,done) => {
-    User.findByUserName(user.username)
+    console.log(user);
+    User.findByUserName(user)
     .then(user => {
       done(null,user)
     }).catch(err => {

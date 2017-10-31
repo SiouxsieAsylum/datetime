@@ -7,7 +7,9 @@ const eventRouter = express.Router();
 /////////////
 
 eventRouter.get('/new', (req, res) => {
-  res.render('events/event-new');
+  res.render('events/event-new',{
+      auth: (req.user) ? true : false
+    });
 })
 
 eventRouter.get('/day/:day',eventController.findByDay)
