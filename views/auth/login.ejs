@@ -1,9 +1,17 @@
 <%include ../partials/toolbar.ejs%>
 
-<form method="POST" action="/auth/login">
+
+<form class="auth" method="POST" action="/auth/login">
+  <h1>Welcome Back!</h1>
+  <h2>Username</h2>
+  <br>
   <input class="username" name = "username" placeholder = "username">
+  <br>
+  <h2>Password</h2>
+  <br>
   <input class="password" name = "password" type="password" placeholder = "password">
-  <button class="submission" type = "submit" value = "submit"></button>
+  <br>
+  <button class="submission" type = "submit" value = "submit">Submit</button>
 </form>
 
 <%include ../partials/endfile.ejs%>

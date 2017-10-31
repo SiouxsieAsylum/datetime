@@ -35,9 +35,10 @@ eventController.edit = (req,res) => {
 eventController.findByDay = (req,res) => {
   Event.findByDay(req.params.day)
   // console.log("day passed")
-  .then(events => {
+  .then((events) => {
     // console.log(typeof req.params.day)
-    res.render('events/event-day', { events })
+    res.render('events/event-day', { events, day: req.params.day, user: req.user.id, auth: (req.user) ? true : false
+    });
   })
   .catch(err => {
     console.log(err)
@@ -45,24 +46,14 @@ eventController.findByDay = (req,res) => {
   })
 }
 
-// eventController.index = (req,res) => {
-//   Event.findAll()
-//   .then(events => {
-//     console.log(events);
-//     // help.saveDatInfo(events);
-//     res.render('events/event-index');
-//     })
-//   .catch(err => {
-//     console.log(err);
-//     res.status(500).render('auth/oops');
-//   })
-// }
 
 eventController.show = (req,res) => {
   Event.findById(req.params.id)
   .then(event => {
     console.log(typeof req.params.id)
-    res.render('events/event-show', {event})
+    res.render('events/event-show', {event,
+      auth: (req.user) ? true : false
+    });
   })
   .catch(err => {
     console.log(err);
@@ -73,7 +64,7 @@ eventController.create = (req,res) => {
   Event.create({
     nam: req.body.name,
     day: req.body.day,
-    // address = req.body.address,
+    address: req.body.address,
     time_begin: req.body.time_begins,
     time_end: req.body.time_ends,
     description: req.body.description
@@ -98,7 +89,9 @@ eventController.update = (req,res) => {
   },req.params.id)
   .then(event => {
     // there will be a form in the modal, and it will be a post request to create many users. those users,a nd the event information, will be passed on to make a new Invitation
-    res.render('events/event-show', {event})
+    res.render('events/event-show', {event,
+      auth: (req.user) ? true : false
+    });
   })
   .catch(err => {
     console.log(err);

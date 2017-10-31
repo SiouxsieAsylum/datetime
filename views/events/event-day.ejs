@@ -1,6 +1,40 @@
 <%include ../partials/toolbar.ejs%>
 
 <%let eventSet = events %>
-<%console.log(events[0].time_begins.substring(0,2))%>
+<%console.log(events)%>
 
+<!-- AM -->
+
+<%= console.log(day) %>
+
+<div class = "container" id="dayContainer">
+<h1 id="today"><%= day %></h1>
+<div class="hour"><p>12am</p></div>
+<div class="hour"><p>1am</p></div>
+<div class="hour"><p>2am</p></div>
+<div class="hour"><p>3am</p></div>
+<div class="hour"><p>4am</p></div>
+<div class="hour"><p>5am</p></div>
+<div class="hour"><p>6am</p></div>
+<div class="hour"><p>7am</p></div>
+<div class="hour"><p>8am</p></div>
+<div class="hour"><p>9am</p></div>
+<div class="hour"><p>10am</p></div>
+<div class="hour"><p>11am</p></div>
+
+<!-- PM -->
+<div class="hour"><p>12pm</p></div>
+<div class="hour"><p>1pm</p></div>
+<div class="hour"><p>2pm</p></div>
+<div class="hour"><p>3pm</p></div>
+<div class="hour"><p>4pm</p></div>
+<div class="hour"><p>5pm</p></div>
+<div class="hour"><p>6pm</p></div>
+<div class="hour"><p>7pm</p></div>
+<div class="hour"><p>8pm</p></div>
+<div class="hour"><p>9pm</p></div>
+<div class="hour"><p>10pm</p></div>
+<div class="hour"><p>11pm</p></div>
+
+</div>
 <%include ../partials/endfile.ejs%>

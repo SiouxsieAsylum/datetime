@@ -1,14 +1,30 @@
 <%include ../partials/toolbar.ejs%>
-  <div id = "calendar">
-  calendar
-  <!-- <%=// ${UserName's Calendar} %> -->
-  <!-- Google Calendar goes here -->
+
+<div class = "container" id="calendar-container">
+
+  <div id="calendar-heading">
+    <div id = "flexMonth">
+      <button onclick="monthDown()">&#8249;</button>
+      <h1 id="month"></h1><h1 id="year"></h1>
+      <button onclick="monthUp()">&#8250;</button>
+    </div>
+
+    <div id="days">
+      <p>Sunday</p> <p>Monday</p>
+      <p>Tuesday</p> <p>Wednesday</p>
+      <p>Thursday</p> <p>Friday</p>
+      <p>Saturday</p>
+    </div>
+  </div>
+
+  <div id="calendar"></div>
 </div>
-<div class="rssfeed" id="RSS">
+
+<div class="notificationfeed" id="notification">
   <!-- RSS Feed Goes Here -->
-  <div class="rssfeed" id="first"></div>
-  <div class="rssfeed" id="second"></div>
-  <div class="rssfeed" id="third"></div>
-  <div class="rssfeed" id="fourth"></div>
+  <a href="/events/new"><div class="notificationfeed" id="first"><p class = "notification-text">No New Notifications! Click here to set up a new event!!</p></div></a>
+  <a href="/events/new"><div class="notificationfeed" id="second"><p class = "notification-text">No New Notifications! Click here to set up a new event!!</p></div></a>
+  <a href="/events/new"><div class="notificationfeed" id="third"><p class = "notification-text">No New Notifications! Click here to set up a new event!!</p></div></a>
+  <a href="/events/new"><div class="notificationfeed" id="fourth"><p class = "notification-text">No New Notifications! Click here to set up a new event!!</p></div></a>
 </div>
 <%include ../partials/endfile.ejs%>

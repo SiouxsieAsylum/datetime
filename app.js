@@ -42,7 +42,9 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.get("/", function(request, response){
-  response.render("index");
+  response.render("index",{
+      auth: (request.user) ? true : false
+    })
 })
 
 app.listen(port, () => {

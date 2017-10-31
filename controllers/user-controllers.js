@@ -7,7 +7,9 @@ const userController = {};
 userController.findHostedEvents = (req,res) => {
   User.findAllYourHostedEvents(req.params.id)
   .then(events => {
-    res.render(`users/${req.params.id}/user-show`, {events})
+    res.render(`users/${req.params.id}/user-show`, {event,
+      auth: (req.user) ? true : false
+    });
   })
   .catch(err => {
     console.log(err);
@@ -18,7 +20,9 @@ userController.findHostedEvents = (req,res) => {
 userController.findAllEvents = (req,res) => {
   User.findAllEvents(req.params.id)
   .then(events => {
-    res.render('users/user-index', {events})
+    res.render('users/user-index', {events,
+      auth: (req.user) ? true : false
+    });
   })
   .catch(err => {
     console.log(err);
@@ -41,7 +45,9 @@ userController.findFriends = (req,res) => {
 userController.show = (req,res) => {
   User.findById(req.params.id)
   .then(user => {
-    res.render('users/user-show', {user})
+    res.render('users/user-show', {user,
+      auth: (req.user) ? true : false
+    });
   })
   .catch(err => {
     console.log(err);
@@ -52,7 +58,9 @@ userController.show = (req,res) => {
 userController.edit = (req,res) => {
   User.findById(req.params.id)
   .then(user => {
-    res.render('users/user-edit', {user})
+    res.render('users/user-edit', {user,
+      auth: (req.user) ? true : false
+    });
   })
   .catch(err => {
         console.log(err);
@@ -94,7 +102,6 @@ userController.create = (req,res) => {
       if (err) return next(err);
       res.redirect('/user')
     })
-    // res.render('users/user-show', {user})
   })
   .catch(err => {
     console.log(err);
@@ -109,7 +116,9 @@ userController.update = (req,res) => {
     email: req.body.email
   }, req.params.id)
   .then(user => {
-    res.render('users/user-show', {user})
+    res.render('users/user-show', {user,
+      auth: (req.user) ? true : false
+    });
   })
   .catch(err => {
     console.log(err);
