@@ -19,7 +19,7 @@ passport.use(
       if(!authHelp.comparePasswords(password,user.password)){
         return done(null,false)
       }else{
-        return(null, user)
+        return done(null, user)
       }
     }).catch(err => {
       console.log(err);

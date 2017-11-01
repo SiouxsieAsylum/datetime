@@ -13,10 +13,12 @@ const eventController = {}
 eventController.findRSVPs = (req,res) => {
   Event.findRSVPs(req.params.id)
   .then(users => {
-    res.render('events/event-show', {users})
+    res.render('events/event-show', {users, user: req.user})
   })
   .catch(err => {
-    res.status.render('auth/oops');
+     res.status(500).render('auth/oops', {user: req.user,
+      auth: (req.user) ? true : false
+    })
   })
 }
 
@@ -24,11 +26,13 @@ eventController.edit = (req,res) => {
   Event.findById(req.params.id)
   .then(event => {
     console.log(typeof req.params.id)
-    res.render('events/event-edit', {event})
+    res.render('events/event-edit', {event, user: req.user})
   })
   .catch(err => {
     console.log(err);
-    res.status(500).render('auth/oops');
+     res.status(500).render('auth/oops', {user: req.user,
+      auth: (req.user) ? true : false
+    })
   })
 }
 
@@ -42,7 +46,9 @@ eventController.findByDay = (req,res) => {
   })
   .catch(err => {
     console.log(err)
-    res.status.render('auth/oops');
+     res.status(500).render('auth/oops', {user: req.user,
+      auth: (req.user) ? true : false
+    })
   })
 }
 
@@ -50,32 +56,37 @@ eventController.findByDay = (req,res) => {
 eventController.show = (req,res) => {
   Event.findById(req.params.id)
   .then(event => {
-    console.log(typeof req.params.id)
-    res.render('events/event-show', {event,
+    res.render('events/event-show', {event, user: req.user,
       auth: (req.user) ? true : false
     });
   })
   .catch(err => {
     console.log(err);
-    res.status(500).render('auth/oops');
+     res.status(500).render('auth/oops', {user: req.user,
+      auth: (req.user) ? true : false
+    })
   })
 }
 eventController.create = (req,res) => {
   Event.create({
-    nam: req.body.name,
+    name: req.body.name,
     day: req.body.day,
     address: req.body.address,
-    time_begin: req.body.time_begins,
-    time_end: req.body.time_ends,
+    time_begins: req.body.time_begins,
+    time_ends: req.body.time_ends,
     description: req.body.description
   })
   .then(event => {
     // there will be a form in the modal, and it will be a post request to create many users. those users,a nd the event information, will be passed on to make a new Invitation
-    res.render('events/event-show', {event})
+    res.redirect('/user', {event, user: req.user,
+      auth: (req.user) ? true : false
+    });
   })
   .catch(err => {
     console.log(err);
-    res.status(500).render('auth/oops');
+     res.status(500).render('auth/oops', {user: req.user,
+      auth: (req.user) ? true : false
+    })
   })
 }
 eventController.update = (req,res) => {
@@ -89,13 +100,15 @@ eventController.update = (req,res) => {
   },req.params.id)
   .then(event => {
     // there will be a form in the modal, and it will be a post request to create many users. those users,a nd the event information, will be passed on to make a new Invitation
-    res.render('events/event-show', {event,
+    res.render('events/event-show', {event, user: req.user,
       auth: (req.user) ? true : false
     });
   })
   .catch(err => {
     console.log(err);
-    res.status(500).render('auth/oops');
+     res.status(500).render('auth/oops', {user: req.user,
+      auth: (req.user) ? true : false
+    })
   })
 }
 eventController.delete = (req,res) => {
@@ -105,7 +118,9 @@ eventController.delete = (req,res) => {
   })
   .catch(err => {
     console.log(err);
-    res.status(500).render('auth/oops');
+     res.status(500).render('auth/oops', {user: req.user,
+      auth: (req.user) ? true : false
+    })
   })
 }
 

@@ -1,11 +1,13 @@
 
 <input class="nameOfEvent" type="text" name="name" placeholder="name">
 <input class="dateInput" type="date" name="day" placeholder="day">
+
 <input class="addressInput" type="text" name="address" placeholder="address">
 <input class="startTime" type="time" name="time_begins" placeholder="time_begins">
 <input class="endTime" type="time" name="time_ends" placeholder="time_ends">
 <textarea class="description" name="description" placeholder="description"></textarea>
-<button class="submission" type="submit" value="submit"></button>
+<input type="hidden" name="host_id" value="<%=user.id%>">
+<button class="submission" type="submit" value="submit">Submit</button>
 </form>
 
 <!-- <input type="hidden" name="host_id" placeholder="<% // user.id %>"> -->

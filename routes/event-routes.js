@@ -6,8 +6,14 @@ const eventRouter = express.Router();
 // get routes/
 /////////////
 
+eventRouter.get('/', (req, res) => {
+  res.redirect("/user", {
+      auth: (req.user) ? true : false
+    });
+})
+
 eventRouter.get('/new', (req, res) => {
-  res.render('events/event-new',{
+  res.render('events/event-new',{user: req.user,
       auth: (req.user) ? true : false
     });
 })

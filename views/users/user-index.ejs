@@ -1,5 +1,7 @@
 <%include ../partials/toolbar.ejs%>
 
+<h1 id="welcome">Welcome back, <%= user.name %></h1>
+
 <div class = "container" id="calendar-container">
 
   <div id="calendar-heading">
@@ -8,12 +10,11 @@
       <h1 id="month"></h1><h1 id="year"></h1>
       <button onclick="monthUp()">&#8250;</button>
     </div>
-
     <div id="days">
-      <p>Sunday</p> <p>Monday</p>
-      <p>Tuesday</p> <p>Wednesday</p>
-      <p>Thursday</p> <p>Friday</p>
-      <p>Saturday</p>
+      <p>Su</p> <p>M</p>
+      <p>Tu</p> <p>Wed</p>
+      <p>Th</p> <p>F</p>
+      <p>Sa</p>
     </div>
   </div>
 

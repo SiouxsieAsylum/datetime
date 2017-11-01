@@ -1,8 +1,40 @@
 <%include ../partials/toolbar.ejs%>
-<%=user.name%>
 
-<!-- hosted events -->
-<!-- event.name, event.day, event.begin_time, event.end_time -->
+<div class = "cover-photo">
+ <div id="user-container">
+  <div class = "profile-picture"></div>
+  <h1 id = "user-title"><%=user.name%></h1>
+ </div>
+</div>
+
+<div class="user-event-container">
+<div id="host-contain">
+  <h1 class="notes"><%= user.name%>'s Hosted Events</h1>
+  <div class="hosted-events">
+    <ul>
+    <% for (let e of events) {%>
+      <%if (e.host_id == user.id) {%>
+
+      <a href="/events/<%=e.id%>">
+        <li>
+          <h1><%= e.name %></h1>
+          <h2><%= e.address %></h2>
+          <div class = "flex-info"><h3><%= e.time_begins%> to <%= e.time_ends%></h3></div>
+        </li>
+      </a>
+      <%}%>
+    <%}%>
+    </ul>
+  </div>
+  </div>
+
+  <div id="notification-contain">
+  <h1 class="notes">Notifications</h1>
+  <div class="user-notifications">
+    <p><a href="/events/new">No New Notifications! Click here to set up a new event!!</a></p>
+  </div>
+  </div>
+</div>
 
 <!-- event notifications -->
 <!-- event.name, event.day, event.begin_time, event.end_time -->

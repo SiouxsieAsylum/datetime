@@ -17,8 +17,6 @@ function populate() {
     newDiv.className = "square";
     newDiv.id = `box${i}`;
     newDiv.style.border = "2px solid rgb(0, 22, 0)";
-    newDiv.style.height = "5vh";
-    newDiv.style.width = "11.4vw";
     newDiv.style.backgroundColor = "rgb(143, 175, 142)";
     newDiv.style.color = "rgb(143, 175, 142)";
       aLink.appendChild(newDiv);

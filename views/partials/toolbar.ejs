@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>DateTime</title>
+  <meta name="viewport" content="width=device-width" />
   <link rel="stylesheet" type="text/css" href="/css/reset.css">
   <link rel="stylesheet" type="text/css" href="/css/styles.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/87ea9562e2.css">
@@ -16,7 +17,7 @@
   <h1>Date Time</h1>
 
   <% if (auth) {%>
-  <a href="/user/<%= user.id %>"><li class="loggedIn"><div id="user"></div></li></a>
+  <a href="/user/<%=user.id %>"><li class="loggedIn"><div id="user"></div></li></a>
   <a href="/auth/logout"><li class="loggedIn">Logout</li></a>
 
 

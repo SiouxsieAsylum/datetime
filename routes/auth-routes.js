@@ -1,6 +1,7 @@
 const express = require('express');
 const authRouter = express.Router();
 const passport = require('../services/auth/local');
+const thepassport = require('passport');
 const authHelpers = require('../services/auth/auth-helpers');
 const userControllers = require('../controllers/user-controllers');
 

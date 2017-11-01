@@ -5,84 +5,90 @@ const userController = {};
 
 // hosted events are to be displayed on user profile, the day page, and on the index
 userController.findHostedEvents = (req,res) => {
-  User.findAllYourHostedEvents(req.params.id)
+  User.findAllYourHostedEvents(req.user.id)
   .then(events => {
-    res.render(`users/${req.params.id}/user-show`, {event,
-      auth: (req.user) ? true : false
+    res.render(`users/user-show`, {events, user: req.user, auth: (req.user) ? true : false
     });
   })
   .catch(err => {
     console.log(err);
-    res.status(500).render('auth/oops.js');
+     res.status(500).render('auth/oops', {user: req.user,
+      auth: (req.user) ? true : false
+    })
   })
 }
 
 userController.findAllEvents = (req,res) => {
-  User.findAllEvents(req.params.id)
+  User.findAllEvents(req.user.id)
   .then(events => {
-    res.render('users/user-index', {events,
+    res.render('users/user-index', {events, user: req.user,
       auth: (req.user) ? true : false
     });
   })
   .catch(err => {
     console.log(err);
-    res.status(500).render('auth/oops.js');
-  })
-}
-
-userController.findFriends = (req,res) => {
-  User.findAllYourFriends(req.params.id)
-  .then(users => {
-    // render a partial of all prev users in the create event page
-    // res.render('user/user-show', events
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).render('auth/oops.js');
-  })
-}
-
-userController.show = (req,res) => {
-  User.findById(req.params.id)
-  .then(user => {
-    res.render('users/user-show', {user,
+     res.status(500).render('auth/oops', {user: req.user,
       auth: (req.user) ? true : false
-    });
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).render('auth/oops.js');
+    })
   })
 }
+// to be implemented
+// userController.findFriends = (req,res) => {
+//   User.findAllYourFriends(req.user.id)
+//   .then(users => {
+//     // render a partial of all prev users in the create event page
+//     // res.render('user/user-show', events
+//   })
+//   .catch(err => {
+//     console.log(err);
+//     res.status(500).render('auth/oops.js');
+//   })
+// }
+
+// necessary?
+// userController.show = (req,res) => {
+//   User.findById(req.user.id)
+//   .then(user => {
+//     res.render('users/user-show', {user,
+//       auth: (req.user) ? true : false
+//     });
+//   })
+//   .catch(err => {
+//     console.log(err);
+//     res.status(500).render('auth/oops.js');
+//   })
+// }
 
 userController.edit = (req,res) => {
-  User.findById(req.params.id)
+  User.findById(req.user.id)
   .then(user => {
     res.render('users/user-edit', {user,
       auth: (req.user) ? true : false
     });
   })
   .catch(err => {
-        console.log(err);
-    res.status(500).render('auth/oops.js');
+    console.log(err);
+    res.status(500).render('auth/oops', {user: req.user,
+      auth: (req.user) ? true : false
+    })
   })
 }
 
-userController.invite = (req,res) => {
-  User.invite({
-    name: req.body.name,
-    phone_number: req.body.phone_number,
-    email: req.body.email,
-  })
-  .then(user => {
-    Invitation.create(event_id, user.id);
-    // res.render('users/user-show', {user})
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).render('auth/oops.js');
-  })
-}
+// userController.invite = (req,res) => {
+//   User.invite({
+//     name: req.body.name,
+//     phone_number: req.body.phone_number,
+//     email: req.body.email,
+//   })
+//   .then(user => {
+//     Invitation.create(event_id, user.id);
+//     // res.render('users/user-show', {user})
+//   })
+//   .catch(err => {
+//     console.log(err);
+//     res.status(500).render('auth/oops.js');
+//   })
+// }
 
 userController.create = (req,res) => {
   console.log(req.body);
@@ -105,7 +111,9 @@ userController.create = (req,res) => {
   })
   .catch(err => {
     console.log(err);
-    res.status(500).render('auth/oops.js');
+     res.status(500).render('auth/oops', {user: req.user,
+      auth: (req.user) ? true : false
+    })
   })
 }
 
@@ -122,7 +130,9 @@ userController.update = (req,res) => {
   })
   .catch(err => {
     console.log(err);
-    res.status(500).render('auth/oops.js');
+     res.status(500).render('auth/oops', {user: req.user,
+      auth: (req.user) ? true : false
+    })
   })
 }
 
@@ -133,8 +143,10 @@ userController.destroy = (req,res) => {
   })
   .catch(err => {
     console.log(err);
-    res.status(500).render('auth/oops.js');
-  })
+     res.status(500).render('auth/oops', {user: req.user,
+      auth: (req.user) ? true : false
+    })
+})
 }
 
 
