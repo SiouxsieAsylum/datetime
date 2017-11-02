@@ -42,7 +42,7 @@ app.use("/user", userRoutes);
 
 app.get("/", function(request, response){
   console.log("I'm in the index");
-  res.send('hello!');
+  response.send('hello!');
   response.render("index.ejs", {user: request.user,
       auth: (request.user) ? true : false
     })
