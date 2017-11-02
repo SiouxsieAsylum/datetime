@@ -22,7 +22,7 @@ authRouter.get('/login', authHelpers.loginRedirect, (req,res,next) => {
     })
 })
 
-authRouter.get('logout', (req,res)=>{
+authRouter.get('/logout', (req,res)=>{
   req.logout();
   res.redirect('back');
 })

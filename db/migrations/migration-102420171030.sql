@@ -32,7 +32,6 @@ host_id INTEGER REFERENCES users(id)
 );
 
 CREATE TABLE IF NOT EXISTS invitations (
-  -- do I even need an id? This is supposed to be intrinsically linked to each event. Can a reference to something else be the primary key?
   id SERIAL PRIMARY KEY,
   event_id INTEGER REFERENCES events(id),
   user_id INTEGER REFERENCES users(id),
