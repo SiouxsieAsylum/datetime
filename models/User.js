@@ -4,9 +4,10 @@ const User = {};
 // join as
 // http://www.dofactory.com/sql/subquery
 
-User.findAllYourFriends = (id) => {
-  return db.manyOrNone(`SELECT * FROM users WHERE users.id = ANY(SELECT invitations.user_id FROM invitations JOIN events ON invitations.event_id = events.plan_id WHERE events.id = ANY(SELECT events.id FROM events JOIN users ON users.id = events.host_id WHERE users.id = $1));`);
-}
+// to be implementeed
+// User.findAllYourFriends = (id) => {
+//   return db.manyOrNone(`SELECT * FROM users WHERE users.id = ANY(SELECT invitations.user_id FROM invitations JOIN events ON invitations.event_id = events.plan_id WHERE events.id = ANY(SELECT events.id FROM events JOIN users ON users.id = events.host_id WHERE users.id = $1)`,[req.user.id]);
+// }
 
 User.findAllYourHostedEvents = (id) => {
   return db.manyOrNone(`SELECT * FROM invitations JOIN events ON invitations.event_id = events.plan_id JOIN users ON users.id = events.host_id WHERE invitations.user_id = $1;`,[id]);
