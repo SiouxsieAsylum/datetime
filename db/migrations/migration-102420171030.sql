@@ -12,12 +12,17 @@
 --I assume it's because the key it's attempting to reference doesn't exist yet, but no matter what order I put, something pops up with that key constraint error. Do I have to state references on one if it's stated on the ther? Do I have to create the database and seed it and then migrate a structure that establishes the references? What exactly are the rules that allow for peaceful foreign key establishemnts?
 
 
+DROP TABLE users CASCADE;
+DROP TABLE events CASCADE;
+DROP TABLE invitations CASCADE;
 
 CREATE TABLE IF NOT EXISTS users (
 id SERIAL PRIMARY KEY,
 name VARCHAR(50) NOT NULL,
 phone_number VARCHAR(10) NOT NULL,
-email VARCHAR(255) NOT NULL
+email VARCHAR(255) NOT NULL,
+username VARCHAR(255),
+password VARCHAR(255)
 --social media accounts to be added later
 );
 
@@ -33,7 +38,7 @@ host_id INTEGER REFERENCES users(id)
 
 CREATE TABLE IF NOT EXISTS invitations (
   id SERIAL PRIMARY KEY,
-  event_id INTEGER REFERENCES events(id),
+  event_id INTEGER REFERENCES events(plan_id),
   user_id INTEGER REFERENCES users(id),
   status VARCHAR(255) DEFAULT 'pending'
 );
