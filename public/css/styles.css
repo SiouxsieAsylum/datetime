@@ -593,6 +593,23 @@ h2 {
   padding:1vh;
 }
 
+#broken-title{
+  margin-top: 15vh;
+}
+
+#broken {
+  align-self: center;
+  height: 60vh;
+  width:60vw;
+  background-size: cover;
+  background-position: 25% 25%;
+  background-image: url(../images/broken.gif);
+}
+
+#broken-button{
+align-self: center;
+}
+
 
 /*``````````````key frames```````````````*/
 

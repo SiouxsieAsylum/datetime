@@ -1,14 +1,14 @@
 
 <h2 class="event-input-titles">Name of Event</h2>
-<input class="nameOfEvent" type="text" name="title" placeholder="name">
+<input class="nameOfEvent" type="text" name="title" placeholder="name" value="<%= event ? event.title : "" %>">
 <h2 class="event-input-titles">Date</h2>
-<input class="dateInput" type="date" name="day" placeholder="day">
+<input class="dateInput" type="date" name="day" value="<%= event ? event.day : "" %>">
 
 <h2 class="event-input-titles" >Address</h2>
 <div class="map-n-address">
 
   <div class="address-container">
-    <input class="addressInput" type="text" name="address" placeholder="address">
+    <input class="addressInput" type="text" name="address" value="<%= event ? event.address : "" %>">
     <div class="placeholder"></div>
     <div class="placeholder"></div>
     <div class="placeholder"></div>
@@ -17,11 +17,11 @@
 </div>
 
 <h2 class="event-input-titles">Start Time</h2>
-<input class="startTime" type="time" name="time_begins" placeholder="time_begins">
+<input class="startTime" type="time" name="time_begins" value="<%= event ? event.time_begins : "" %>">
 <h2 class="event-input-titles">End Time</h2>
-<input class="endTime" type="time" name="time_ends" placeholder="time_ends">
+<input class="endTime" type="time" name="time_ends" value="<%= event ? event.time_ends : "" %>">
 <h2 class="event-input-titles">Description</h2>
-<textarea class="description" name="description" placeholder="description"></textarea>
+<textarea class="description" name="description" value="<%= event ? event.description : "" %>"></textarea>
 
 <input type="hidden" name="host_id" value="<%=user.id%>">
 

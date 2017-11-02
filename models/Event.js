@@ -35,7 +35,7 @@ Event.findRSVPs = (id) => {
 }
 
 Event.update = (event, id) => {
-   return db.one(`UPDATE events SET name = $1, day=$2, time_begins = $3, time_ends=$4, description=$5, WHERE plan_id = $6 RETURNING *`,[event.title, event.day, event.time_begins, event.time_ends, event.description, id])
+   return db.one(`UPDATE events SET title = $1, day=$2, time_begins = $3, time_ends=$4, description=$5 WHERE plan_id = $6 RETURNING *`,[event.title, event.day, event.time_begins, event.time_ends, event.description, id])
 }
 
 Event.delete = (id) => {

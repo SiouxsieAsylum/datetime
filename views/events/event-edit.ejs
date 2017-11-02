@@ -1,5 +1,9 @@
 <%include ../partials/toolbar.ejs%>
 
+<div class = "cover-photo">
+  <a href = "#"><p>Upload Photo</p></a>
+ </div>
+
 <h1>Edit <%=event.name%></h1>
 <form class="event-form" method="POST" action="/events/<%= event.plan_id %>?_method=PUT">
 <%include ../partials/event-form.ejs %>
