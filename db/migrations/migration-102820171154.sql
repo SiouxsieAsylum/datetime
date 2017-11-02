@@ -5,13 +5,13 @@
  --    relationship VARCHAR NOT NULL,
  --  );
 
- ALTER TABLE users ADD username VARCHAR;
- ALTER TABLE users ADD password TEXT;
+ -- ALTER TABLE users ADD username VARCHAR;
+ -- ALTER TABLE users ADD password TEXT;
 
- ALTER TABLE invitation ADD relationship VARCHAR
- ALTER TABLE invitations ADD rsvp INTEGER DEFAULT 0;
+ ALTER TABLE invitation ADD relationship VARCHAR;
+ -- ALTER TABLE invitations ADD rsvp INTEGER DEFAULT 0;
 
- ALTER TABLE events ADD address VARCHAR;
+ -- ALTER TABLE events ADD address VARCHAR;
 -- (for how many minutes late (default 0))
 -- (900 will be code for not coming)
 -- (future improvement: let host set how late you're allowed to rsvp before you're just cut off altogether, )
