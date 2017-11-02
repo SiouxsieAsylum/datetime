@@ -72,11 +72,6 @@ eventController.create = (req,res) => {
     description: req.body.description,
     host_id: req.user.id
   })
-  // .then(event => {
-    // event doesn't really exist just yet so you can't take the id
-    // Invitation.create(event.id,req.user.id);
-  //   return event;
-  // })
   .then(event => {
     res.redirect('/user');
   })

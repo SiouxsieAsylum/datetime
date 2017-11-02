@@ -1,4 +1,5 @@
  const db = require('../db/config');
+ // const Invitation
 
 const Event = {};
 
@@ -23,8 +24,10 @@ Event.findById = (id) => {
 // there needs to be a find my hosted events, maybe here?
 // there should be a find by day function too
 
-Event.create = (etitle) => {
-  return db.one(`INSERT INTO events (title, day, address, time_begins, time_ends, description, host_id) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *`,[event.title, event.day, event.address, event.time_begins, event.time_ends, event.description, event.host_id])
+Event.create = (event) => {
+  db.none(`INSERT INTO events (title, day, address, time_begins, time_ends, description, host_id) VALUES ($1,$2,$3,$4,$5,$6,$7)`,[event.title, event.day, event.address, event.time_begins, event.time_ends, event.description, event.host_id])
+  db.none(`INSERT INTO invitations (event_id, user_id) values ((SELECT plan_id FROM events WHERE host_id = $1 ORDER BY plan_id DESC LIMIT 1), $1);`,[event.host_id]);
+  return db.one(`SELECT * FROM events WHERE host_id = $1 ORDER BY plan_id DESC LIMIT 1;`,[event.host_id]);
 
   // gotta chain some promises
   // have an op to create ids plus invites, but back end handle seperately.

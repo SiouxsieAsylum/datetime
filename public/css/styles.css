@@ -471,12 +471,12 @@ h2 {
 .event-name,.event-address,.event-times{
   border-left:2px solid rgb(224, 226, 224);
   color:black;
-  padding:0.5vh;
+  padding:1vh;
   text-align: left;
   font-size: 2vw;
   margin: 0;
   background-color: rgb(227, 237, 228);
-  height:3vh;
+  height:5vh;
 }
 
 .event-name:hover,.event-address:hover,.event-times:hover{
