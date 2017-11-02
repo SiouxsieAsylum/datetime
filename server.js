@@ -17,6 +17,11 @@ const port = process.env.PORT || 8000;
 const app = express();
 require('dotenv').config();
 
+
+app.set('view engine', 'ejs');
+// app.set('views', path.join(__dirname, 'views'));
+app.set('views','./views');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}))
 
@@ -32,8 +37,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride('_method'));
 
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
 
 app.use("/auth",authRoutes);
 app.use("/events", eventRoutes);
