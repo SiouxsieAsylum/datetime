@@ -9,7 +9,6 @@ const methodOverride= require('method-override');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 
-// const timeKeep = require("./services/time-helpers");
 const userRoutes = require("./routes/user-routes");
 const eventRoutes = require("./routes/event-routes");
 const authRoutes = require("./routes/auth-routes");
@@ -33,16 +32,16 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride('_method'));
 
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
 app.use("/auth",authRoutes);
 app.use("/events", eventRoutes);
 app.use("/user", userRoutes);
 
 
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
 app.get("/", function(request, response){
-  response.render("index",{user: request.user,
+  response.render("index.ejs", {user: request.user,
       auth: (request.user) ? true : false
     })
 })
