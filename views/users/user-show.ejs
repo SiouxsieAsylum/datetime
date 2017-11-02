@@ -15,11 +15,11 @@
     <% for (let e of events) {%>
       <%if (e.host_id == user.id) {%>
 
-      <a href="/events/<%=e.id%>">
+      <a href="/events/<%=e.plan_id%>">
         <li>
-          <h1><%= e.name %></h1>
-          <h2><%= e.address %></h2>
-          <div class = "flex-info"><h3><%= e.time_begins%> to <%= e.time_ends%></h3></div>
+          <h1 class="event-name"><%= e.title %></h1>
+          <h2 class="event-address"><%= e.address %></h2>
+          <div class = "flex-info"><h3 class="event-times"><%= e.time_begins%> to <%= e.time_ends%></h3></div>
         </li>
       </a>
       <%}%>

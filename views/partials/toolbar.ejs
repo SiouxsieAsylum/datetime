@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width" />
   <link rel="stylesheet" type="text/css" href="/css/reset.css">
   <link rel="stylesheet" type="text/css" href="/css/styles.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/87ea9562e2.css">
+  <link href="https://fonts.googleapis.com/css?family=Comfortaa|Raleway" rel="stylesheet">
   <script type="text/javascript" src="/js/main.js"></script>
 
 </head>
@@ -13,20 +13,49 @@
 
 
 <div id = "toolbar">
-  <div id="icon"></div>
-  <h1>Date Time</h1>
+  <div>
+  <a href="/"><div id="icon"></div></a>
 
+  <h1 id="logotext">Date Time</h1>
+  </div>
+  <div>
   <% if (auth) {%>
-  <a href="/user/<%=user.id %>"><li class="loggedIn"><div id="user"></div></li></a>
-  <a href="/auth/logout"><li class="loggedIn">Logout</li></a>
+  <a href="/user/<%=user.id %>">
+    <li class="loggedIn">
+      <div id="user"></div>
+    </li>
+  </a>
+
+
+
+  <a href="/user">
+    <li class="loggedIn">
+      <div id="home"></div>
+    </li>
+  </a>
+
+  <a href="/auth/logout">
+    <li class="loggedIn">
+      <p>Logout</p>
+    </li>
+  </a>
 
 
     <%} else { %>
 
-  <a href="/auth/login"><li class="loggedOut">Login</li></a>
-  <a href="auth/register"><li class="loggedOut">Register</li></a>
+  <a href="/auth/login">
+    <li class="loggedOut">
+      <p>Login</p>
+    </li>
+  </a>
+  <a href="/auth/register">
+    <li class="loggedOut">
+      <p>Register</p>
+    </li>
+  </a>
 
   <% }%>
+  </div>
   <!-- I have no idea if this is how that works -->
  <!--  <div class = "menu-precursor" id="profile-pic"><i class="fa fa-user-circle" aria-hidden="true"></i></div>
   <div class = "menu-precursor" id="menu"><i class="fa fa-bars" aria-hidden="true"></i></div> -->

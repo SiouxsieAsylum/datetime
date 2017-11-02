@@ -1,18 +1,19 @@
 const express = require("express");
-const eventController = require('../controllers/event-controllers')
+const eventController = require('../controllers/event-controllers');
+const authHelpers = require('../services/auth/auth-helpers');
 const eventRouter = express.Router();
 
 ///////////////
 // get routes/
 /////////////
 
-eventRouter.get('/', (req, res) => {
+eventRouter.get('/', authHelpers.loginRequired, (req, res) => {
   res.redirect("/user", {
       auth: (req.user) ? true : false
     });
 })
 
-eventRouter.get('/new', (req, res) => {
+eventRouter.get('/new', authHelpers.loginRequired, (req, res) => {
   res.render('events/event-new',{user: req.user,
       auth: (req.user) ? true : false
     });
@@ -20,9 +21,9 @@ eventRouter.get('/new', (req, res) => {
 
 eventRouter.get('/day/:day',eventController.findByDay)
 
-eventRouter.get("/:id/edit", eventController.edit)
+eventRouter.get("/:plan_id/edit", authHelpers.loginRequired, eventController.edit)
 // model and controller not written yet
-eventRouter.get('/:id', eventController.show);
+eventRouter.get('/:plan_id', eventController.show);
 ///////////////
 //post routes/
 /////////////
@@ -31,11 +32,11 @@ eventRouter.post('/', eventController.create);
 ///////////////
 //put routes//
 /////////////
-eventRouter.put('/:id', eventController.update);
+eventRouter.put('/:plan_id', eventController.update);
 
 ////////////////
 //delete routes
 //////////////
-eventRouter.delete('/:id', eventController.update);
+eventRouter.delete('/:plan_id', eventController.update);
 
 module.exports = eventRouter;

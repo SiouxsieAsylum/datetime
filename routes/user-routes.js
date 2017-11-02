@@ -1,16 +1,17 @@
 const express = require("express");
 const userController = require('../controllers/user-controllers')
+const authHelpers = require('../services/auth/auth-helpers');
 const userRouter = express.Router();
 
-userRouter.get("/", userController.findAllEvents)
+userRouter.get("/", authHelpers.loginRequired, userController.findAllEvents)
 userRouter.get("/new", (req,res) => {
   res.render('users/user-new', {user: req.user,
       auth: (req.user) ? true : false
     });
 })
 
-userRouter.get("/:id", userController.findHostedEvents)
-userRouter.get("/:id/edit", userController.edit)
+userRouter.get("/:id", authHelpers.loginRequired, userController.findHostedEvents)
+userRouter.get("/:id/edit", authHelpers.loginRequired, userController.edit)
 
 
 // userRouter.post('/', userController.create)

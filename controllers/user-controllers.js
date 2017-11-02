@@ -21,6 +21,7 @@ userController.findHostedEvents = (req,res) => {
 userController.findAllEvents = (req,res) => {
   User.findAllEvents(req.user.id)
   .then(events => {
+    console.log("events", events);
     res.render('users/user-index', {events, user: req.user,
       auth: (req.user) ? true : false
     });

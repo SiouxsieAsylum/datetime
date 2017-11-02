@@ -13,18 +13,18 @@ Event.findAll = () => {
 }
 
 Event.findMyEvents = (userId) => {
-  return db.query(`SELECT * FROM events JOIN invitations ON invitations.event_id = events.id WHERE invitations.user_id = $1;`, [userId]);
+  return db.query(`SELECT * FROM events JOIN invitations ON invitations.event_id = events.plan_id WHERE invitations.user_id = $1;`, [userId]);
 }
 
 Event.findById = (id) => {
-  return db.one(`SELECT * FROM events WHERE id = $1`, [id])
+  return db.one(`SELECT * FROM events WHERE plan_id = $1`, [id])
 }
 
 // there needs to be a find my hosted events, maybe here?
 // there should be a find by day function too
 
-Event.create = (event,userId) => {
-  return db.one(`INSERT INTO events (name, day, address, time_begins, time_ends, description, host_id) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *`,[event.name, event.day, event.address, event.time_begins, event.time_ends, event.description, userId])
+Event.create = (etitle) => {
+  return db.one(`INSERT INTO events (title, day, address, time_begins, time_ends, description, host_id) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *`,[event.title, event.day, event.address, event.time_begins, event.time_ends, event.description, event.host_id])
 
   // gotta chain some promises
   // have an op to create ids plus invites, but back end handle seperately.
@@ -33,15 +33,15 @@ Event.create = (event,userId) => {
 }
 
 Event.findRSVPs = (id) => {
-  return db.manyOrNone(`SELECT user.name, invitations.rsvp FROM invitations JOIN events ON events.id = invitations.event_id JOIN users ON users.id = invitations.user_id WHERE invitations.event_id = $1`,[id])
+  return db.manyOrNone(`SELECT user.name, invitations.rsvp FROM invitations JOIN events ON events.plan_id = invitations.event_id JOIN users ON users.id = invitations.user_id WHERE invitations.event_id = $1`,[id])
 }
 
 Event.update = (event, id) => {
-   return db.one(`UPDATE events SET name = $1, day=$2, time_begins = $3, time_ends=$4, description=$5, host_id=$6 WHERE id = $7 RETURNING *`,[event.name, event.day, event.time_begins, event.time_ends, event.description, event.host_id, id])
+   return db.one(`UPDATE events SET name = $1, day=$2, time_begins = $3, time_ends=$4, description=$5, WHERE plan_id = $6 RETURNING *`,[event.title, event.day, event.time_begins, event.time_ends, event.description, id])
 }
 
 Event.delete = (id) => {
-  return db.none(`DELETE FROM events WHERE id = $1`, [id])
+  return db.none(`DELETE FROM events WHERE plan_id = $1`, [id])
 }
 
 module.exports = Event;

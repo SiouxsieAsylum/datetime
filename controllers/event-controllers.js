@@ -1,31 +1,26 @@
-//best thing to do is to have another chained .then that handles the backend submission of invitees to the database
-// eventController.create = (blah) =>
-// Event create
-// .then loop through invite creations? (hold them where? local storage?)
-// .then res.render/res.redirect whereever
-// .catch
+
 const Event = require('../models/event');
 const Invitation = require('../models/invitation');
 const help = require('../services/time-helpers');
 
 const eventController = {}
 
-eventController.findRSVPs = (req,res) => {
-  Event.findRSVPs(req.params.id)
-  .then(users => {
-    res.render('events/event-show', {users, user: req.user})
-  })
-  .catch(err => {
-     res.status(500).render('auth/oops', {user: req.user,
-      auth: (req.user) ? true : false
-    })
-  })
-}
+// eventController.findRSVPs = (req,res) => {
+//   Event.findRSVPs(req.params.id)
+//   .then(users => {
+//     res.render('events/event-show', {users, user: req.user})
+//   })
+//   .catch(err => {
+//      res.status(500).render('auth/oops', {user: req.user,
+//       auth: (req.user) ? true : false
+//     })
+//   })
+// }
 
 eventController.edit = (req,res) => {
-  Event.findById(req.params.id)
+  Event.findById(req.params.plan_id)
   .then(event => {
-    console.log(typeof req.params.id)
+    console.log(typeof req.params.plan_id)
     res.render('events/event-edit', {event, user: req.user})
   })
   .catch(err => {
@@ -54,7 +49,7 @@ eventController.findByDay = (req,res) => {
 
 
 eventController.show = (req,res) => {
-  Event.findById(req.params.id)
+  Event.findById(req.params.plan_id)
   .then(event => {
     res.render('events/event-show', {event, user: req.user,
       auth: (req.user) ? true : false
@@ -69,18 +64,21 @@ eventController.show = (req,res) => {
 }
 eventController.create = (req,res) => {
   Event.create({
-    name: req.body.name,
+    title: req.body.title,
     day: req.body.day,
     address: req.body.address,
     time_begins: req.body.time_begins,
     time_ends: req.body.time_ends,
-    description: req.body.description
+    description: req.body.description,
+    host_id: req.user.id
   })
+  // .then(event => {
+    // event doesn't really exist just yet so you can't take the id
+    // Invitation.create(event.id,req.user.id);
+  //   return event;
+  // })
   .then(event => {
-    // there will be a form in the modal, and it will be a post request to create many users. those users,a nd the event information, will be passed on to make a new Invitation
-    res.redirect('/user', {event, user: req.user,
-      auth: (req.user) ? true : false
-    });
+    res.redirect('/user');
   })
   .catch(err => {
     console.log(err);
@@ -91,13 +89,12 @@ eventController.create = (req,res) => {
 }
 eventController.update = (req,res) => {
   Event.update({
-    name: req.body.name,
+    title: req.body.title,
     day: req.body.day,
-    // address = req.body.address,
     time_begins: req.body.time_begins,
     time_ends: req.body.time_ends,
     description: req.body.description
-  },req.params.id)
+  },req.params.plan_id)
   .then(event => {
     // there will be a form in the modal, and it will be a post request to create many users. those users,a nd the event information, will be passed on to make a new Invitation
     res.render('events/event-show', {event, user: req.user,

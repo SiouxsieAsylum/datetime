@@ -1,7 +1,13 @@
 <%include ../partials/toolbar.ejs%>
 
+<div class="cover-photo">
+  <a href="#">Upload a photo</a>
+</div>
+
 <h1 id="new-event">Create a new event!</h1>
-<form method = "POST" action="/events/new">
+
+<form class="event-form" method = "POST" action="/events">
+
 <%include ../partials/event-form.ejs %>
 
 <%include ../partials/endfile.ejs%>

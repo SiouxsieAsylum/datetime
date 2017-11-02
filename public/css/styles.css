@@ -3,8 +3,6 @@
   text-decoration: none;
 }
 
-
-
 body {
   /*overflow-y: hidden;*/
   display:flex;
@@ -20,28 +18,34 @@ body {
     background-size: cover;
 }
 
-button {
-  border-radius: 1vh;
-  background-color:rgba(255,255,255,0.0);
+  button {
+  background-color:rgb(0, 53, 11);
   border:.05vh solid white;
   height:6vh;
   font-size: 2vh;
   text-align: center;
-  color:white;
+  color:black;
   margin: 1vh;
   padding: 1vh;
   outline: none;
 }
 
 button:hover{
-  transform: scale(-1,1);
-  background-color:rgba(255,255,255,0.2);
-  outline: none;
+  border-radius: 1vh;
+  transform: scale(1.1,1.1);
+  /*background-color:rgba(255,255,255,0.2);*/
 }
 
 button:active{
-  background-color:rgba(255,255,255,0.2);
-  outline: none;
+  background-color:rgba(255,255,255,0.5);
+}
+
+h1,h2,h3{
+  font-family: 'Comfortaa', cursive;
+}
+
+p,textarea,input,button{
+  font-family: 'Raleway', sans-serif;
 }
 
 .container{
@@ -53,7 +57,7 @@ button:active{
   height: 7vh;
   width: 100vw;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   border-bottom: .1vh solid rgb(0, 22, 0);
   box-shadow: 0vh .5vh .5vh rgba(0,25,6,0.5);
@@ -66,7 +70,12 @@ button:active{
 #toolbar li {
   list-style:none;
   color:white;
+  margin-right: 2vw;
   font-size: 3vh;
+}
+
+#toolbar div{
+  display: flex;
 }
 
 #icon {
@@ -254,19 +263,45 @@ form {
   align-self: center;
   /*margin-top: 15vh;*/
   background-color: rgba(0, 73, 2,0.8);
-  padding:5vh;
+  /*padding:5vh;*/
   width:80vw;
+}
+
+.auth{
+   padding:5vh;
+   margin-top: 15vh;
+}
+
+.auth h2{
+  font-size: 3vh
+}
+
+.auth input[type=submit]{
+  margin-top: 2vh;
+}
+
+#home{
+  height:5vh;
+  width:5vh;
+  background-image:url(../images/home-icon-md.png);
+  background-size: cover;
 }
 
 input{
   border:none;
-  padding: 1vh 5vh 1vh 5vh;
-  font-size: 4vh;
+  padding: 1vh;
+  font-size: 3vh;
   background-color: rgb(208, 226, 208);
+  outline:none;
+  border-left:1vw groove rgb(0, 53, 11);
 }
 
 input:hover{
   background-color: white;
+}
+
+input:focus{
+  border-radius:2vw;
 }
 
 h2 {
@@ -325,6 +360,7 @@ h2 {
   width:inherit;
   background-color: white;
   overflow-y: scroll;
+  padding: 1vh;
 }
 
 .user-notifications{
@@ -362,28 +398,169 @@ h2 {
 
 /*```````````````Event Form``````````````*/
 
+.event-form{
+  background-color: rgba(255,255,255,0.0);
+  border-style: hidden solid hidden solid;
+  border-color:rgba(255,255,255,0.9);;
+  border-width: 2px;
+  padding:2vw;
+}
+
 #new-event{
-  margin-top: 10vh
+  margin-top: 10vh;
 }
-.nameOfEvent{
 
+.event-input-titles{
+  font-size: 3vh;
 }
-.dateInput{
 
+.map-n-address{
+ display: flex;
+ justify-content:space-between;
 }
+
 .addressInput{
-
+ width:40vw;
 }
-.startTime{
 
+.placeholder {
+  height:3vh;
+  width:40vw;
+  border-radius: 5vh;
+  margin-top:1vh;
+  background-color: rgb(208, 226, 208);
+}
+
+.startTime{
+ /*margin: 2vw;*/
 }
 .endTime{
-
+ /*margin: 2vw;*/
 }
 .description{
-
+  background-color: rgb(208, 226, 208);
+  padding:1vw;
+  height:30vw;
+  width:50vw;
+  font-size: 2vh;
+  border:none;
+  border-left:1vw groove rgb(0, 53, 11);
+  outline: none;
 }
 
+.description:hover{
+  background-color: white;
+}
+
+.description:focus{
+  border-radius:2vw;
+}
+
+.map {
+  height: 20vh;
+  width: 30vw;
+  background-color: grey;
+}
+
+.map:hover{
+  border-radius:2vw;
+}
+
+/*```````user profile hosted events```````*/
+
+.event-name,.event-address,.event-times{
+  border-left:2px solid rgb(224, 226, 224);
+  color:black;
+  padding:0.5vh;
+  text-align: left;
+  font-size: 2vw;
+  margin: 0;
+  background-color: rgb(227, 237, 228);
+  height:3vh;
+}
+
+.event-name:hover,.event-address:hover,.event-times:hover{
+  color:rgb(71, 71, 71);
+}
+
+.event-address{
+  background-color: rgb(255, 255, 255);
+}
+
+.event-times{
+  margin-bottom: 1vh;
+}
+
+
+.event-name,.event-times{
+  background-color: rgb(227, 237, 228);
+}
+
+.hosted-events a {
+  height:1vh;
+}
+
+/*``````````````event stuff```````````````*/
+
+
+
+.show-title{
+  text-align: left;
+  text-indent: 5vw;
+  background-color: rgba(234, 234, 234,0.7);
+  position:absolute;
+  top:10vw;
+  text-align: left;
+  text-indent: 5vw;
+  width:100vw;
+}
+
+.event{
+  text-align: left;
+  /*text-indent: 5vw;*/
+  font-size: 5vw;
+}
+
+.show-day{
+  text-indent: 7vw;
+  margin-top: 5vw;
+}
+
+.show-times-start{
+  text-indent: 0vw;
+  /*margin-left: 5vw;*/
+}
+
+.address-and-map{
+  display: flex;
+  margin-top: 3vh;
+  justify-content: space-around;
+}
+
+.show-address{
+  width:40vw;
+}
+
+.no-touch{
+  height:initial;
+  width: initial;
+  background-color: rgba(0,0,0,0);
+  align-self: flex-end;
+}
+
+.button-container{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.desc{
+  margin-top: 5vw;
+  width:80vw;
+  height:40vh;
+  background-color: white;
+  align-self: center;
+  padding:1vh;
+}
 
 
 /*``````````````key frames```````````````*/
@@ -405,15 +582,14 @@ h2 {
     font-size: 2vw;
   }
 
-.user-event-container{
-  flex-direction: row;
-  top:17vh;
-  height:55vh;
-}
+  .user-event-container{
+    flex-direction: row;
+    top:17vh;
+    height:55vh;
+  }
 
   .hosted-events{
     height: 30vw;
-
   }
 
   .user-notifications{
@@ -433,7 +609,75 @@ h2 {
     width:60vw;
   }
 
+  button {
+  color:white;
+  }
+
+  #calendar-container {
+
+  height: 37vw;
+  width: 35vw;
+  align-self: center;
+  border: .05vh solid black;
+  background-color:rgb(0, 51, 2);
+  box-shadow: 2vh 2vh 2vh rgba(0,25,6,0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
+#calendar-heading{
+  height: 8vw;
+}
+
+#days{
+  font-size: 2vw;
+  position:absolute;
+  bottom:1vh;
+  display:flex;
+  width: inherit;
+  justify-content: space-around;
+}
+
+#welcome{
+
+}
+
+#calendar{
+  width:33vw;
+}
+
+#flexMonth{
+  display:flex;
+  justify-content:space-between;
+}
+
+#flexMonth h1{
+  margin-top: 2vw;
+  font-size: 3vw;
+}
+
+.dateLinks{
+  text-decoration:none;
+}
+
+.square{
+ height:4.5vw;
+ width: 4.5vw;
+}
+
+.square:hover{
+  animation:grow .5s linear ;
+}
+
+.square:active{
+  animation:click .1s linear;
+}
+
+
+}
+
+
 
 
 
