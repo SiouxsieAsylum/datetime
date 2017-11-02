@@ -1,5 +1,5 @@
-const User = require('../models/user');
-const Invitation = require('../models/invitation');
+const User = require('../models/User');
+const Invitation = require('../models/Invitation');
 const bcrypt = require('bcryptjs');
 const userController = {};
 
