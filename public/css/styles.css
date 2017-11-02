@@ -24,7 +24,7 @@ body {
   height:6vh;
   font-size: 2vh;
   text-align: center;
-  color:black;
+  color:white;
   margin: 1vh;
   padding: 1vh;
   outline: none;
@@ -44,7 +44,7 @@ h1,h2,h3{
   font-family: 'Comfortaa', cursive;
 }
 
-p,textarea,input,button{
+p,.desc,textarea,input,button{
   font-family: 'Raleway', sans-serif;
 }
 
@@ -68,22 +68,44 @@ p,textarea,input,button{
 }
 
 #toolbar li {
+  background-size: 97%;
+  padding: 1vw;
+  height:7vh;
   list-style:none;
   color:white;
-  margin-right: 2vw;
+  /*margin-right: 2vw;*/
   font-size: 3vh;
+}
+
+#toolbar li:hover, #icon:hover {
+  background-color:rgb(0, 89, 2);
 }
 
 #toolbar div{
   display: flex;
 }
 
+#home{
+  height:5vh;
+  width:5vh;
+  background-image:url(../images/home-icon-md.png);
+  background-size: 97%;
+  background-repeat: no-repeat;
+  /*padding-bottom: 1vw;*/
+}
+
 #icon {
   height:6vh;
   width: 6vh;
+  /*padding: 1vw;*/
   /*border: .05vh solid green;*/
   background-image: url(../images/white-logo.png);
-  background-size: cover;
+  background-size: 97%;
+  background-repeat: no-repeat;
+}
+
+#logotext{
+
 }
 
 h1{
@@ -280,13 +302,6 @@ form {
   margin-top: 2vh;
 }
 
-#home{
-  height:5vh;
-  width:5vh;
-  background-image:url(../images/home-icon-md.png);
-  background-size: cover;
-}
-
 input{
   border:none;
   padding: 1vh;
@@ -471,9 +486,9 @@ h2 {
 .event-name,.event-address,.event-times{
   border-left:2px solid rgb(224, 226, 224);
   color:black;
-  padding:1vh;
+  padding:1.5vh;
   text-align: left;
-  font-size: 2vw;
+  font-size: 1.5vw;
   margin: 0;
   background-color: rgb(227, 237, 228);
   height:5vh;
@@ -491,7 +506,6 @@ h2 {
   margin-bottom: 1vh;
 }
 
-
 .event-name,.event-times{
   background-color: rgb(227, 237, 228);
 }
@@ -501,8 +515,6 @@ h2 {
 }
 
 /*``````````````event stuff```````````````*/
-
-
 
 .show-title{
   text-align: left;
@@ -517,18 +529,37 @@ h2 {
 
 .event{
   text-align: left;
-  /*text-indent: 5vw;*/
   font-size: 5vw;
 }
 
 .show-day{
-  text-indent: 7vw;
+  text-align: left;
   margin-top: 5vw;
+}
+
+#year{
+  margin-top: 0;
+}
+
+#date{
+  color:rgb(0, 86, 6);
+}
+
+#day-container div{
+  display: flex;
+}
+
+#day-container{
+
+  margin-left: 7vw;
+  width:20vw;
+  display: flex;
+  flex-direction: column;
+  /*justify-content: center;*/
 }
 
 .show-times-start{
   text-indent: 0vw;
-  /*margin-left: 5vw;*/
 }
 
 .address-and-map{
@@ -613,7 +644,7 @@ h2 {
   color:white;
   }
 
-  #calendar-container {
+#calendar-container {
 
   height: 37vw;
   width: 35vw;
@@ -639,10 +670,6 @@ h2 {
   justify-content: space-around;
 }
 
-#welcome{
-
-}
-
 #calendar{
   width:33vw;
 }
@@ -657,22 +684,63 @@ h2 {
   font-size: 3vw;
 }
 
-.dateLinks{
-  text-decoration:none;
-}
 
 .square{
  height:4.5vw;
  width: 4.5vw;
 }
 
-.square:hover{
-  animation:grow .5s linear ;
+.show-title{
+  top:13vw;
 }
 
-.square:active{
-  animation:click .1s linear;
+.show-day{
+  font-size: 3vw;
 }
+
+.event{
+  text-align: left;
+  font-size: 2vw;
+}
+
+#flex-times{
+  flex-direction: column;
+  /*justify-content: center;*/
+}
+
+#event-specs{
+  display: flex;
+  justify-content: space-around;
+}
+
+.show-times-start{
+
+  text-indent: 0vw;
+  /*margin-left: 5vw;*/
+}
+
+.address-and-map{
+  display: flex;
+  margin-top: 3vh;
+  justify-content: space-around;
+}
+
+.show-address{
+  width:40vw;
+}
+
+
+.show{
+  width:20vw;
+}
+
+#day-container{
+  margin-left: 0;
+}
+.show-day{
+  font-size: 3vw;
+}
+
 
 
 }

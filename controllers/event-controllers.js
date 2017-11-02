@@ -21,7 +21,9 @@ eventController.edit = (req,res) => {
   Event.findById(req.params.plan_id)
   .then(event => {
     console.log(typeof req.params.plan_id)
-    res.render('events/event-edit', {event, user: req.user})
+    res.render('events/event-edit', {event, user: req.user,
+      auth: (req.user) ? true : false
+    })
   })
   .catch(err => {
     console.log(err);

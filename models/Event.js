@@ -28,11 +28,6 @@ Event.create = (event) => {
   db.none(`INSERT INTO events (title, day, address, time_begins, time_ends, description, host_id) VALUES ($1,$2,$3,$4,$5,$6,$7)`,[event.title, event.day, event.address, event.time_begins, event.time_ends, event.description, event.host_id])
   db.none(`INSERT INTO invitations (event_id, user_id) values ((SELECT plan_id FROM events WHERE host_id = $1 ORDER BY plan_id DESC LIMIT 1), $1);`,[event.host_id]);
   return db.one(`SELECT * FROM events WHERE host_id = $1 ORDER BY plan_id DESC LIMIT 1;`,[event.host_id]);
-
-  // gotta chain some promises
-  // have an op to create ids plus invites, but back end handle seperately.
-  // this should be in invition model
-  // return db.one(`INSERT INTO invitations (user_id, event_id) VALUES ($1, $2) RETURNING *`, [event.host_id, event.id,])
 }
 
 Event.findRSVPs = (id) => {

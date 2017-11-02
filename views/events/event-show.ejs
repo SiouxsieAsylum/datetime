@@ -1,25 +1,60 @@
 <%include ../partials/toolbar.ejs%>
+
 <div class = "cover-photo">
   <h1 class = "show-title"><%=event.title%></h1>
  </div>
-   <h1 class = "event show-day"><%=event.day.getMonth() + 1;%> - <%=event.day.getDate();%> - <%=event.day.getFullYear();%></h1>
+
+  <div id ="event-specs">
+  <div id="day-container">
+  <div>
+   <h1 class = "event show-day">
+    <%=event.day.getMonth() + 1;%>
+     </h1>
+  <h1 class = "event show-day" id="date">
+    <%=event.day.getDate();%>
+  </h1>
+  </div>
+  <h1 class = "event show-day" id="year">
+    <%= event.day.getFullYear();%>
+   </h1>
+  </div>
+
    <div class="address-and-map" id="flex-times">
-     <h1 class = "show-time-start event">Start: <%=event.time_begins%></h1>
-     <h1 class = "show-time-end event">End: <%=event.time_ends %></h1>
+     <h1 class = "show-time-start event">
+      Start: <%=event.time_begins%>
+     </h1>
+     <h1 class = "show-time-end event">
+      End:   <%=event.time_ends %>
+     </h1>
    </div>
+</div>
   <div class = "address-and-map">
-    <h1 class = "event show-address"><%=event.address%></h1>
+    <div>
+    <h1 class = "event show-address">
+      <%= event.address == null ? " Address TBD" : event.address %></h1>
+    <div class="show placeholder"></div>
+    <div class="show placeholder"></div>
+    <div class="show placeholder"></div>
+  </div>
+
     <div class="map"></div>
   </div>
 
   <div class = "desc"><%=event.description%></div>
 
 <div class="button-container">
-  <a href="/events/<%=event.plan_id%>/edit"><button class="flex-end">Edit</button></a>
-  <form class= "no-touch" action="/events/<%=event.plan_id%>?_method='DELETE'" method='POST' ><button class="flex-end">Delete</button></form>
+  <a href="/events/<%=event.plan_id%>/edit">
+    <button class="flex-end">Edit</button>
+  </a>
 
+  <form class= "no-touch" action="/events/<%=event.plan_id%>?_method='DELETE'" method='POST' >
+    <button class="flex-end">Delete</button>
+  </form>
   <a href="/user"><button class="flex-end">List</button></a>
 </div>
+
+
+
 
 
 <%include ../partials/endfile.ejs%>
