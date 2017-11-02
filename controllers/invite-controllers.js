@@ -1,4 +1,4 @@
-const Invitation = require('../models/invitation');
+const Invitation = require('../models/Invitation');
 const invitationController = {};
 
 invitationController.create = (req,res) => {

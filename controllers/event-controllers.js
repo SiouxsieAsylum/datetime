@@ -1,7 +1,7 @@
 
-const Event = require('../models/event');
-const Invitation = require('../models/invitation');
-const help = require('../services/time-helpers');
+const Event = require('../models/Event');
+const Invitation = require('../models/Invitation');
+// const help = require('../services/time-helpers');
 
 const eventController = {}
 
