@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS events (
 plan_id SERIAL PRIMARY KEY,
 title VARCHAR(50) NOT NULL,
 day DATE NOT NULL,
+address VARCHAR(255),
 time_begins TIME NOT NULL,
 time_ends TIME,
 description TEXT,

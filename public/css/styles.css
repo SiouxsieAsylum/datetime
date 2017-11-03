@@ -105,8 +105,6 @@ p,.desc,textarea,input,button{
 #icon {
   height:6vh;
   width: 6vh;
-  /*padding: 1vw;*/
-  /*border: .05vh solid green;*/
   background-image: url(../images/white-logo.png);
   background-size: 97%;
   background-repeat: no-repeat;
@@ -291,9 +289,7 @@ h1{
 
 form {
   align-self: center;
-  /*margin-top: 15vh;*/
   background-color: rgba(0, 73, 2,0.8);
-  /*padding:5vh;*/
   width:80vw;
 }
 
@@ -788,6 +784,9 @@ align-self: center;
     margin-top: 0;
     height:90vh;
   }
+.cover-photo{
+  margin-top: 0;
+}
 }
 
 
