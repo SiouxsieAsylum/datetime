@@ -14,7 +14,7 @@ eventRouter.get('/', authHelpers.loginRequired, (req, res) => {
 })
 
 eventRouter.get('/new', authHelpers.loginRequired, (req, res) => {
-  res.render('events/event-new',{user: req.user,
+  res.render('events/event-new',{user: req.user, event:false,
       auth: (req.user) ? true : false
     });
 })

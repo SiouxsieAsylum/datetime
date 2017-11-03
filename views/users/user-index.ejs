@@ -1,8 +1,11 @@
 <%include ../partials/toolbar%>
 
+<div id="index-background-image">
+<div>
 <h1 id="welcome">Welcome back, <%= user.name %></h1>
 
 <div class = "container" id="calendar-container">
+  <!-- for divs class square, if year, month, day = event.day, do thing -->
 
   <div id="calendar-heading">
     <div id = "flexMonth">
@@ -20,6 +23,7 @@
 
   <div id="calendar"></div>
 </div>
+</div>
 
 <div class="notificationfeed" id="notification">
   <!-- RSS Feed Goes Here -->
@@ -27,5 +31,7 @@
   <a href="/events/new"><div class="notificationfeed" id="second"><p class = "notification-text">No New Notifications! Click here to set up a new event!!</p></div></a>
   <a href="/events/new"><div class="notificationfeed" id="third"><p class = "notification-text">No New Notifications! Click here to set up a new event!!</p></div></a>
   <a href="/events/new"><div class="notificationfeed" id="fourth"><p class = "notification-text">No New Notifications! Click here to set up a new event!!</p></div></a>
+</div>
+
 </div>
 <%include ../partials/endfile%>
