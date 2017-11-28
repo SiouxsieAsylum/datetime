@@ -1,28 +1,12 @@
-# DateTime
+# DateTime 1.0.0
 ## Created by Andrea McKenzie
+  Email:[mckenzie.andrea.m@gmail.com](mailto:mckenzie.andrea.m@gmail.com)
+  LinkedIn:[Andrea McKenzie](https://www.linkedin.com/in/andrea-mckenzie/)
+  Skype: andrea.michelle.mckenzie
 
-## Description
+##Billboard... or something more?
 
-This is the first version of an application meant to make planning events easier. This way, everyone knows who is coming to any event you set, and when. 
-
-## MVP
-
-A user authenticated app where you can CRUD events 
-
-## Original MVP before reality set in 
-
-A user authenticated app where you can CRUD events and invite people to them, and that will email (bonus: notify!) you when the event is close.  
-
-## Wireframes
-
-![Wireframes](public/images/wireframes.jpg) 
-
-## Installation protocol 
-
-  * Fork and clone this repository
-  * run `npm install`
-  * run `npm run start` to use or `npm run dev` to tinker
-
+**DateTime** is an application dedicated to making event planning easier. In its larval stage, **DateTime** is a billboard demonstrating the name, location, and time frame of your event. **DateTIme** is built on an `Express` Node.js framework and interacts with a `PostGresSQL` database.
 
 ## Technologies used 
 
@@ -47,25 +31,53 @@ A user authenticated app where you can CRUD events and invite people to them, an
 - Promise values cannot be accessed outside the fetch request
 
 
-## Bonus Features - future
+## Database Schema
 
-  * Admin verification
+**DateTime** feeds from three tables: 
 
-... All attendees can make changes to event name, date, time, and whereabouts, but only admins of each event can approve those changes. 
+| users |
+| type/constraint | id | name | phone_number | email | username | password |
+|- - -|- - -|- - -|- - -|- - -|- - -|- - -|
+| Type | SERIAL | VARCHAR(50) | VARCHAR(10) | VARCHAR(255) | VARCHAR(255) | VARCHAR(255) |
+| Primary Key | true | false | false | false | false | false |
+| References | N/A | N/A | N/A | N/A | N/A | N/A |
+| Not Null | true | false | true | true | false | false |
+| default | N/A | N/A | N/A | N/A | N/A | N/A |
 
-  * Notification feed
+|events|
+| type/constraint | plan_id | title | day | address | time_begins| time_ends | description | host_id
+|- - -|- - -|- - -|- - -|- - -|- - -|- - -|- - -|- - -|
+| Type | SERIAL | VARCHAR(50) | DATE | VARCHAR(255) | TIME | TIME | TEXT | INTEGER |
+| Primary Key | true | false | false | false | false | false | false | false |
+| References | N/A | N/A | N/A | N/A | N/A | N/A | N/A | users(id) |
+| Not Null | true | true | true | false | true | false | false | false |
+| default | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
 
-... The home, event, and user page comes with an automatic  feed that allows for updates on every change within the event, especially RSVP changes
-... You can "mute" events to unsubscribe so they don't get push notifications 
 
-  * Push Notifications 
-... all RSVP changes, event changes, etc
+| invitations |
+| type/constraint | id | event_id | user_id | status |
+|- - -|- - -|- - -|- - -|- - -|
+| Type | SERIAL | INTEGER | INTEGER | VARCHAR(255) |
+| Primary Key | true | false | false | false |
+| References | N/A | events(plan_id) | users(id) | N/A |
+| Not Null | true | false | false | false |
+| default | N/A | N/A | N/A | 'pending' |
 
-  * Invite users on event create/edit/show page
+`invitations` is a join table that binds users to events by having been invited by a user (anyone invited will be submitted to the database, albiet encrypted, and the only person who can get to your information is the user who invited you) rather than just by being the host.
 
-## Tech and extra packages planned for future versions
-- [How to upload a photo](https://stackoverflow.com/questions/31353703/how-to-upload-image-file-from-computer-and-set-as-div-background-image-using-jqu)
-- [Google Calendar API](https://developers.google.com/google-apps/calendar/quickstart/nodejs) <-- bonus! (looks really complex tbh)
-- [Google Maps API](https://developers.google.com/maps/documentation/embed/guide)
-- [Node push notifications](https://www.npmjs.com/package/node-pushnotifications) <-- bonus! gonna try to implement for android and ios
-- [Express Mailer](https://www.npmjs.com/package/express-mailer)
+This database structure allows for heighly specific queries to return data in precisely the structure we need to make best use of it later. 
+
+## Wireframes
+
+![Wireframes](public/images/wireframes.jpg) 
+
+## Screenshots 
+
+![Landing Page](landing-page.png)
+![Calendar View](calendar.png)
+
+###### Future Plans:
+-Possible integration of React framework to replace `/views` client-side
+- Long-running script to datematch current date against event date and trigger automatic notifications with `node-fcm` and emails with `node-mailer`. 
+- Google Maps and Google GeoCoding API to allow for easy visualization of locations and ease of getting directions.
+- Inviting other users whether registered users or not (phone numbers and email addresses saved to database and encrypted with `bcryptjs`).
