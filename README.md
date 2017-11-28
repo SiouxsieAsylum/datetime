@@ -4,7 +4,7 @@
   LinkedIn:[Andrea McKenzie](https://www.linkedin.com/in/andrea-mckenzie/)
   Skype: andrea.michelle.mckenzie
 
-##Billboard... or something more?
+## Billboard... or something more?
 
 **DateTime** is an application dedicated to making event planning easier. In its larval stage, **DateTime** is a billboard demonstrating the name, location, and time frame of your event. **DateTIme** is built on an `Express` Node.js framework and interacts with a `PostGresSQL` database.
 
