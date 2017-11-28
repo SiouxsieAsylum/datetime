@@ -37,16 +37,16 @@
 
 | users |
 | type/constraint | id | name | phone_number | email | username | password |
-|- - -|- - -|- - -|- - -|- - -|- - -|- - -|
+| - - - | - - - | - - - | - - - | - - - | - - - | - - - |
 | Type | SERIAL | VARCHAR(50) | VARCHAR(10) | VARCHAR(255) | VARCHAR(255) | VARCHAR(255) |
 | Primary Key | true | false | false | false | false | false |
 | References | N/A | N/A | N/A | N/A | N/A | N/A |
 | Not Null | true | false | true | true | false | false |
 | default | N/A | N/A | N/A | N/A | N/A | N/A |
 
-|events|
-| type/constraint | plan_id | title | day | address | time_begins| time_ends | description | host_id
-|- - -|- - -|- - -|- - -|- - -|- - -|- - -|- - -|- - -|
+| events |
+| type/constraint | plan_id | title | day | address | time_begins| time_ends | description | host_id |
+| - - - | - - - | - - - | - - - | - - - | - - - | - - - | - - - | - - - |
 | Type | SERIAL | VARCHAR(50) | DATE | VARCHAR(255) | TIME | TIME | TEXT | INTEGER |
 | Primary Key | true | false | false | false | false | false | false | false |
 | References | N/A | N/A | N/A | N/A | N/A | N/A | N/A | users(id) |
@@ -56,7 +56,7 @@
 
 | invitations |
 | type/constraint | id | event_id | user_id | status |
-|- - -|- - -|- - -|- - -|- - -|
+| - - - | - - - | - - - | - - - | - - - |
 | Type | SERIAL | INTEGER | INTEGER | VARCHAR(255) |
 | Primary Key | true | false | false | false |
 | References | N/A | events(plan_id) | users(id) | N/A |
