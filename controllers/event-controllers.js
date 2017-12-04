@@ -53,6 +53,7 @@ eventController.findByDay = (req,res) => {
 eventController.show = (req,res) => {
   Event.findById(req.params.plan_id)
   .then(event => {
+    console.log(event)
     res.render('events/event-show', {event, user: req.user,
       auth: (req.user) ? true : false
     });
